@@ -1,0 +1,784 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section id="hero" style="background: url({% static '' %}img/hero-bg.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-md-12 col-sm-12">
+				<div class="hero-wrapper">
+					<div class="hero-details">
+						<div class="hero-title">
+							<h1>Introducing Chakri<br> Market Place Corporate</h1>
+							<div class="hero-text">
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br> Lorem
+									Ipsum has been the industry's standard</p>
+							</div>
+						</div>
+						<form action="#" class="hero-form">
+							<div class="job-category">
+								<select id="select-job">
+									<option value="online">Online Jobs</option>
+									<option value="online">Offline Jobs</option>
+								</select>
+								<div class="icon-one">
+									<span><i class="fas fa-map-marker-alt"></i></span>
+								</div>
+							</div>
+							<div class="job-keyword">
+								<input type="text" placeholder="Job Title Keyword" class="keyword">
+								<div class="icon-two">
+									<span><i class="fas fa-briefcase"></i></span>
+								</div>
+							</div>
+							<button class="hero-btn"><i class="fas fa-search"></i> Search</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="category">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="titles">
+					<h2 class="titles__main-title">Category</h2>
+					<h6 class="titles__sub-title">Fringilla risus at, imperdiet turpis. Pellentesque elementum</h6>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat1.png" alt="">
+						<span class="category__icon icon-color-one"><i class="fas fa-atom"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-one">250</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Data Science & Analitycs</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat2.html" alt="">
+						<span class="category__icon icon-color-two"><i class="fas fa-pencil-alt"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-two">330</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Web Design & Illustration</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat3.png" alt="">
+						<span class="category__icon icon-color-three"><i class="fas fa-book"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-three">250</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Education & Training</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat4.png" alt="">
+						<span class="category__icon icon-color-four"><i class="fas fa-user-tie"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-four">250</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Sales Marketing</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat5.png" alt="">
+						<span class="category__icon icon-color-five"><i class="fas fa-file-code"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-five">350</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Web & Softwere Develop</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat6.png" alt="">
+						<span class="category__icon icon-color-six"><i class="fas fa-laptop"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-six">300</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Digital Marketing</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat7.png" alt="">
+						<span class="category__icon icon-color-seven"><i class="fas fa-align-left"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-seven">150</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Writing & Translations</a></h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="category">
+					<div class="category__image">
+						<img src="{% static '' %}img/category/cat8.png" alt="">
+						<span class="category__icon icon-color-eight"><i class="fas fa-calculator"></i></span>
+					</div>
+					<div class="category__count">
+						<span class="category__count-color-eight">250</span>
+					</div>
+					<div class="category__info">
+						<h6><a href="#">Accounting & Consulting</a></h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="featured-job">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="titles">
+					<h2 class="titles__main-title">Featured Jobs</h2>
+					<h6 class="titles__sub-title">Pellentesque elementum libero enim, eget gravida nunc laoreet</h6>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<article class="feature-full__job-posts">
+					<div class="company-logo">
+						<a href="#"><img src="{% static '' %}img/company-logo/company-logo1.png" alt=""></a>
+					</div>
+					<div class="job-description">
+						<h5 class="job-title"><a href="#">Travel Agency Responsive Minimal Website Design with Mobile
+								App </a></h5>
+						<span class="location"><a href="#"><i class="fas fa-map-marker-alt"></i> New York</a></span>
+						<span class="job-category cat-color-one"><a href="#">Web Design</a></span>
+					</div>
+					<div class="budget">
+						<ul>
+							<li class="duration">
+								<p>21 Days</p>
+							</li>
+							<li class="amount">
+								<p>$3500</p>
+							</li>
+						</ul>
+					</div>
+					<div class="apply">
+						<a href="#" class="apply-btn">Apply</a>
+					</div>
+				</article>
+				<article class="feature-full__job-posts">
+					<div class="company-logo">
+						<a href="#"><img src="{% static '' %}img/company-logo/company-logo2.png" alt=""></a>
+					</div>
+					<div class="job-description">
+						<h5 class="job-title"><a href="#">A complete 20 sec Short Film 3D Animation </a></h5>
+						<span class="location"><a href="#"><i class="fas fa-map-marker-alt"></i> Tokyo</a></span>
+						<span class="job-category cat-color-two"><a href="#">3D Animation</a></span>
+					</div>
+					<div class="budget">
+						<ul>
+							<li class="duration">
+								<p>30 - 50 Hr</p>
+							</li>
+							<li class="amount">
+								<p>$25/hr</p>
+							</li>
+						</ul>
+					</div>
+					<div class="apply">
+						<a href="#" class="apply-btn">Apply</a>
+					</div>
+				</article>
+				<article class="feature-full__job-posts">
+					<div class="company-logo">
+						<a href="#"><img src="{% static '' %}img/company-logo/company-logo3.png" alt=""></a>
+					</div>
+					<div class="job-description">
+						<h5 class="job-title"><a href="#">Travel Agency Responsive Minimal Website Design</a></h5>
+						<span class="location"><a href="#"><i class="fas fa-map-marker-alt"></i> Abu Dhabi</a></span>
+						<span class="job-category cat-color-three"><a href="#">Web Design</a></span>
+					</div>
+					<div class="budget">
+						<ul>
+							<li class="duration">
+								<p>10 Days</p>
+							</li>
+							<li class="amount">
+								<p>$2500</p>
+							</li>
+						</ul>
+					</div>
+					<div class="apply">
+						<a href="#" class="apply-btn">Apply</a>
+					</div>
+				</article>
+				<article class="feature-full__job-posts">
+					<div class="company-logo">
+						<a href="#"><img src="{% static '' %}img/company-logo/company-logo4.png" alt=""></a>
+					</div>
+					<div class="job-description">
+						<h5 class="job-title"><a href="#">Crowdfunding Mobile App Design from Scratch</a></h5>
+						<span class="location"><a href="#"><i class="fas fa-map-marker-alt"></i> Panchagarh</a></span>
+						<span class="job-category cat-color-four"><a href="#">UI/UX</a></span>
+					</div>
+					<div class="budget">
+						<ul>
+							<li class="duration">
+								<p>25 - 30 Hr</p>
+							</li>
+							<li class="amount">
+								<p>$22/hr</p>
+							</li>
+						</ul>
+					</div>
+					<div class="apply">
+						<a href="#" class="apply-btn">Apply</a>
+					</div>
+				</article>
+				<article class="feature-full__job-posts">
+					<div class="company-logo">
+						<a href="#"><img src="{% static '' %}img/company-logo/company-logo5.png" alt=""></a>
+					</div>
+					<div class="job-description">
+						<h5 class="job-title"><a href="#">Market Research, and Digital Marketing</a></h5>
+						<span class="location"><a href="#"><i class="fas fa-map-marker-alt"></i> Torento</a></span>
+						<span class="job-category cat-color-five"><a href="#">Digital Marketing</a></span>
+					</div>
+					<div class="budget">
+						<ul>
+							<li class="duration">
+								<p>07 Days</p>
+							</li>
+							<li class="amount">
+								<p>$2050</p>
+							</li>
+						</ul>
+					</div>
+					<div class="apply">
+						<a href="#" class="apply-btn">Apply</a>
+					</div>
+				</article>
+				<div class="load-button">
+					<a href="#" class="load-btn">View All Jobs</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="featured-cities">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="titles">
+					<h2 class="titles__main-title">Featured Jobs</h2>
+					<h6 class="titles__sub-title">Pellentesque elementum libero enim, eget gravida nunc laoreet</h6>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="cities">
+					<div class="cities__image">
+						<img src="{% static '' %}img/city/city1.jpg" alt="">
+					</div>
+					<div class="cities__number-name">
+						<span class="cities__number">250</span>
+						<span class="cities__name"><a href="#">New York</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="cities">
+					<div class="cities__image">
+						<img src="{% static '' %}img/city/city2.jpg" alt="">
+					</div>
+					<div class="cities__number-name">
+						<span class="cities__number">220</span>
+						<span class="cities__name"><a href="#">Abu Dhabi</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="cities">
+					<div class="cities__image">
+						<img src="{% static '' %}img/city/city3.jpg" alt="">
+					</div>
+					<div class="cities__number-name">
+						<span class="cities__number">188</span>
+						<span class="cities__name"><a href="#">Alaska</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="cities">
+					<div class="cities__image">
+						<img src="{% static '' %}img/city/city4.jpg" alt="">
+					</div>
+					<div class="cities__number-name">
+						<span class="cities__number">170</span>
+						<span class="cities__name"><a href="#">Texas</a></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="load-button">
+					<a href="#" class="load-btn">View All Jobs</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="cta">
+	<div class="container">
+		<div class="cta" style="background: url({% static '' %}img/cta/cta-bg.png);">
+			<div class="row">
+				<div class="col-lg-6 col-md-12 col-sm-12">
+					<div class="cta__details-wrapper">
+						<div class="cta__details">
+							<h3 class="cta-title">Get Free Store Setup Assistance We are just a phone call away.</h3>
+							<div class="get-button">
+								<a href="#" class="get-btn">Get Started</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12 col-sm-12">
+					<div class="cta__image">
+						<img src="{% static '' %}img/cta/cta1.png" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="entrepreneurs">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2 col-md-12 col-sm-12"></div>
+			<div class="col-lg-8 col-md-12 col-sm-12">
+				<div class="titles">
+					<h2 class="titles__main-title">Storrea Powers Ambitious Entrepreneurs</h2>
+					<h6 class="titles__sub-title">Lorem Ipsum is simply dummy text of the printing and typesetting
+						dustry. Lorem Ipsum has been the industry's standard.</h6>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-12 col-sm-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="statistics">
+					<span class="statistics__icon"><i class="fas fa-building"></i></span>
+					<div class="statistics__details">
+						<span class="statistics__score">150+</span>
+						<p>Business Powered by Storrea</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="statistics">
+					<span class="statistics__icon"><i class="fab fa-first-order"></i></span>
+					<div class="statistics__details">
+						<span class="statistics__score">35000+</span>
+						<p>Number of Orders</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="statistics">
+					<span class="statistics__icon"><i class="fas fa-magic"></i></span>
+					<div class="statistics__details">
+						<span class="statistics__score">1M+</span>
+						<p>Sold on Storrea</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="testimonial-wrapper">
+			<div class="row">
+				<div class="col-lg-4 col-md-12 col-sm-12">
+					<div class="testimonial-image">
+						<img src="{% static '' %}img/testimonial/testimonial.png" alt="">
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-12 col-sm-12">
+					<div class="slider-wrapper">
+						<div class="testimonial-slider">
+							<div>
+								<div class="testimonial-items">
+									<div class="testimonial-item">
+										<div class="author-image">
+											<img src="{% static '' %}img/testimonial/testimonial-1.jpg" alt="">
+										</div>
+										<div class="author-details">
+											<h6 class="name">Charli Brown</h6>
+											<ul class="author-social">
+												<li>
+													<a href="#"><i class="fab fa-facebook-square"></i></a>
+												</li>
+												<li>
+													<a href="#"><i class="fab fa-linkedin"></i></a>
+												</li>
+												<li>
+													<a href="#"><i class="fab fa-twitter-square"></i></a>
+												</li>
+											</ul>
+										</div>
+										<div class="quote">
+											<p>Proin scelerisque enim eget pulvinar ullamcorper, quisque feugiat
+												ultricies risus vel visible.eum neque molestiae molestias.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="testimonial-items">
+									<div class="testimonial-item">
+										<div class="author-image">
+											<img src="{% static '' %}img/testimonial/testimonial-2.jpg" alt="">
+										</div>
+										<div class="author-details">
+											<h6 class="name">John Deo</h6>
+											<ul class="author-social">
+												<li>
+													<a href="#"><i class="fab fa-facebook-square"></i></a>
+												</li>
+												<li>
+													<a href="#"><i class="fab fa-linkedin"></i></a>
+												</li>
+												<li>
+													<a href="#"><i class="fab fa-twitter-square"></i></a>
+												</li>
+											</ul>
+										</div>
+										<div class="quote">
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat dolore,
+												eum neque molestiae molestias.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="top-freelancer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-12 col-sm-12"></div>
+			<div class="col-lg-6 col-md-12 col-sm-12">
+				<div class="titles">
+					<h2 class="titles__main-title">Top Freelacers</h2>
+					<h6 class="titles__sub-title">Lorem Ipsum is simply dummy text of the printing and typesetting
+						dustry. Lorem Ipsum has been the industry's standard.</h6>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-12 col-sm-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<article class="freelancers freelancer-grid-view">
+					<div class="feature-image">
+						<img src="{% static '' %}img/freelancer/freelancer-1.jpg" alt="">
+						<span class="online"></span>
+					</div>
+					<div class="name-designation">
+						<h5 class="name">Mr. Robert</h5>
+						<h5 class="designation">UI/UX Designer </h5>
+					</div>
+					<div class="rate-hire">
+						<div class="rate">
+							<p>Rate : <span>$85/hr</span></p>
+						</div>
+						<div class="hire-button">
+							<a href="#" class="hire-btn">Hire Me</a>
+						</div>
+					</div>
+					<div class="review-details">
+						<ul class="review">
+							<li class="point">5.0</li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li>(<span class="amount">105</span> Reviews)</li>
+						</ul>
+					</div>
+					<div class="contact-details">
+						<ul>
+							<li><span class="verified">Verified</span></li>
+							<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+							<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+							<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+							<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+						</ul>
+					</div>
+				</article>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<article class="freelancers freelancer-grid-view">
+					<div class="feature-image">
+						<img src="{% static '' %}img/freelancer/freelancer-2.jpg" alt="">
+						<span class="online"></span>
+					</div>
+					<div class="name-designation">
+						<h5 class="name">Rafsan Prodhan</h5>
+						<h5 class="designation">Web developer </h5>
+					</div>
+					<div class="rate-hire">
+						<div class="rate">
+							<p>Rate : <span>$80/hr</span></p>
+						</div>
+						<div class="hire-button">
+							<a href="#" class="hire-btn">Hire Me</a>
+						</div>
+					</div>
+					<div class="review-details">
+						<ul class="review">
+							<li class="point">5.0</li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li>(<span class="amount">110</span> Reviews)</li>
+						</ul>
+					</div>
+					<div class="contact-details">
+						<ul>
+							<li><span class="verified">Verified</span></li>
+							<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+							<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+							<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+							<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+						</ul>
+					</div>
+				</article>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<article class="freelancers freelancer-grid-view">
+					<div class="feature-image">
+						<img src="{% static '' %}img/freelancer/freelancer-3.jpg" alt="">
+						<span class="online"></span>
+					</div>
+					<div class="name-designation">
+						<h5 class="name">Charli Brown</h5>
+						<h5 class="designation">Motion Artist</h5>
+					</div>
+					<div class="rate-hire">
+						<div class="rate">
+							<p>Rate : <span>$79/hr</span></p>
+						</div>
+						<div class="hire-button">
+							<a href="#" class="hire-btn">Hire Me</a>
+						</div>
+					</div>
+					<div class="review-details">
+						<ul class="review">
+							<li class="point">5.0</li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li><span class="star"><i class="fas fa-star"></i></span></li>
+							<li>(<span class="amount">100</span> Reviews)</li>
+						</ul>
+					</div>
+					<div class="contact-details">
+						<ul>
+							<li><span class="verified">Verified</span></li>
+							<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+							<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+							<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+							<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+						</ul>
+					</div>
+				</article>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="load-button">
+					<a href="#" class="load-btn">View All Freelancers</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div id="pricing-table">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-12 col-sm-12"></div>
+			<div class="col-lg-6 col-md-12 col-sm-12">
+				<div class="titles">
+					<h2 class="titles__main-title">Pricing Plan</h2>
+					<h6 class="titles__sub-title">Lorem Ipsum is simply dummy text of the printing and typesetting
+						dustry. Lorem Ipsum has been the industry's standard.</h6>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-12 col-sm-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-2 col-md-12 col-sm-12"></div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="pricing-item">
+					<h4 class="pricing-title">Yearly Access</h4>
+					<p class="pricing-sub-title">Most Popular</p>
+					<h1 class="price"><span>$</span>49.00</h1>
+					<ul class="pricing-details">
+						<li>Access To All Themes</li>
+						<li>Theme Updates</li>
+						<li>Premium Support</li>
+						<li>Unlimited Website Usages</li>
+						<li>Risk-Free Guarantee</li>
+						<li>Yearly Renewal Fee</li>
+						<li><del>One Time Fee</del></li>
+					</ul>
+					<button class="pt-button">Get Started</button>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="pricing-item">
+					<h4 class="pricing-title">Lifetime Access</h4>
+					<p class="pricing-sub-title">Best Deal</p>
+					<h1 class="price"><span>$</span>169.00</h1>
+					<ul class="pricing-details">
+						<li>Access To All Themes</li>
+						<li>Theme Updates</li>
+						<li>Premium Support</li>
+						<li>Unlimited Website Usages</li>
+						<li>Risk-Free Guarantee</li>
+						<li>Yearly Renewal Fee</li>
+						<li><del>One Time Fee</del></li>
+					</ul>
+					<button class="pt-button">Get Started</button>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-12 col-sm-12">
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="pricing-caption">
+					<p>Cancel your membership or upgrade to a different package at any time after signing up.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<section id="blog-posts">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-12 col-sm-12"></div>
+			<div class="col-lg-6 col-md-12 col-sm-12">
+				<div class="titles">
+					<h2 class="titles__main-title">Blog Posts</h2>
+					<h6 class="titles__sub-title">Lorem Ipsum is simply dummy text of the printing and typesetting
+						dustry. Lorem Ipsum has been the industry's standard.</h6>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-12 col-sm-12"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="blog-posts">
+					<div class="blog-image">
+						<img src="{% static '' %}img/blog/blog-1.jpg" alt="">
+					</div>
+					<div class="blog-details">
+						<ul class="post-meta">
+							<li>Nov. 05. 2019</li>
+							<li><a href="#" class="tags">Fashion</a></li>
+						</ul>
+						<div class="blog-title">
+							<a href="#">Style Icons Menswear Muses for Winter</a>
+						</div>
+						<div class="text">
+							<p>We always cue up music when we’re entertaining. But when it’s just us puttering around
+								the kitchen</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="blog-posts">
+					<div class="blog-image">
+						<img src="{% static '' %}img/blog/blog-2.jpg" alt="">
+					</div>
+					<div class="blog-details">
+						<ul class="post-meta">
+							<li>April. 08. 2019</li>
+							<li><a href="#" class="tags">Music</a></li>
+						</ul>
+						<div class="blog-title">
+							<a href="#">Athena Calderone’s Tasting Notes</a>
+						</div>
+						<div class="text">
+							<p>How to install the app with in 2 munites. Most easiest way ever. How to install the app
+								with.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="blog-posts">
+					<div class="blog-image">
+						<img src="{% static '' %}img/blog/blog-3.jpg" alt="">
+					</div>
+					<div class="blog-details">
+						<ul class="post-meta">
+							<li>May.05.2019</li>
+							<li><a href="#" class="tags">Fashion</a></li>
+						</ul>
+						<div class="blog-title">
+							<a href="#">Have you Heard? Top Tunes of 2014</a>
+						</div>
+						<div class="text">
+							<p>If you’ve ever visited an Anthropologie store, you’re likely familiar with the work of
+								Katie</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="load-button">
+					<a href="#" class="load-btn">View All Blogs</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}

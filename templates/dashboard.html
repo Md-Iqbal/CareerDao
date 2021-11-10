@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<section id="dashboard-map">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="overview">
+						<div class="stat-icon icon-color-one">
+							<i class="fas fa-chart-pie"></i>
+						</div>
+						<div class="stat-text">
+							<p>Total Earning</p>
+							<span>$10955</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="overview">
+						<div class="stat-icon icon-color-two">
+							<i class="fas fa-chart-line"></i>
+						</div>
+						<div class="stat-text">
+							<p>Project Completed</p>
+							<span>29</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="overview">
+						<div class="stat-icon icon-color-three">
+							<i class="fas fa-chart-bar"></i>
+						</div>
+						<div class="stat-text">
+							<p>Pending</p>
+							<span>06</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+					<div class="overview">
+						<div class="stat-icon icon-color-four">
+							<i class="fas fa-chart-area"></i>
+						</div>
+						<div class="stat-text">
+							<p>Bid Remaining</p>
+							<span>+89</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="chart">
+						<div class="chart-info">
+							<h4 class="title">Earnings</h4>
+							<ul class="nav-tabs chart-nav" id="myTab" role="tablist">
+								<li>
+									<a class="nav-item active" id="nav-Day-tab" data-toggle="tab" href="#nav-Day" role="tab" aria-controls="nav-Day" aria-selected="true">Day</a>
+								</li>
+								<li>
+									<a class="nav-item" id="nav-Week-tab" data-toggle="tab" href="#nav-Week" role="tab" aria-controls="nav-Week" aria-selected="true">Week</a>
+								</li>
+								<li>
+									<a class="nav-item" id="nav-Month-tab" data-toggle="tab" href="#nav-Month" role="tab" aria-controls="nav-Month" aria-selected="true">Month</a>
+								</li>
+							</ul>
+						</div>
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="nav-Day" role="tabpanel" aria-labelledby="nav-Day-tab">
+                              <canvas id="day"></canvas>
+                           </div>
+							<div class="tab-pane fade" id="nav-Week" role="tabpanel" aria-labelledby="nav-Week-tab">
+                              <canvas id="week"></canvas>
+                           </div>
+							<div class="tab-pane fade" id="nav-Month" role="tabpanel" aria-labelledby="nav-Month-tab">
+                              <canvas id="month"></canvas>
+                           </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="chart small-charts">
+						<div class="chart-info">
+							<h4 class="title">Earning Over Time</h4>
+							<canvas id="earning-chart" height="300" width="300"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="chart small-charts">
+						<div class="chart-info">
+							<h4 class="title">Earning Over Time</h4>
+							<canvas id="bid-chart" height="300" width="300"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="chart small-charts">
+						<div class="chart-info">
+							<h4 class="title">Total Earnings</h4>
+							<canvas id="total-earning-chart" height="300" width="300"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div class="milestone-wrapper">
+						<div class="milestone">
+							<h3>Milestones</h3>
+							<a class="float add-milestone" href="#">Request Milestone</a>
+						</div>
+					</div>
+					<div class="db-table table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Amount</th>
+									<th>Description</th>
+									<th>Status</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>$300.00 USD</td>
+									<td>Makeup Design</td>
+									<td>In Progress</td>
+									<td>
+									  	<div class="btn-group">
+										  <button class="btn btn-secondary btn-sm" type="button">
+										    Ask Release
+										  </button>
+										  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <div class="dropdown-menu">
+										    <a class="dropdown-item" href="#">Ask Release</a>
+										    <a class="dropdown-item" href="#">Cancel</a>
+										    <a class="dropdown-item" href="#">Dispute</a>
+										  </div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>$200.00 USD</td>
+									<td>PSD to HTML</td>
+									<td>In Progress</td>
+									<td>
+									  	<div class="btn-group">
+										  <button class="btn btn-secondary btn-sm" type="button">
+										    Ask Release
+										  </button>
+										  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <div class="dropdown-menu">
+										    <a class="dropdown-item" href="#">Ask Release</a>
+										    <a class="dropdown-item" href="#">Cancel</a>
+										    <a class="dropdown-item" href="#">Dispute</a>
+										  </div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>$200.00 USD</td>
+									<td>Responsive</td>
+									<td>In Progress</td>
+									<td>
+									  	<div class="btn-group">
+										  <button class="btn btn-secondary btn-sm" type="button">
+										   Ask Release
+										  </button>
+										  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <div class="dropdown-menu">
+										    <a class="dropdown-item" href="#">Ask Release</a>
+										    <a class="dropdown-item" href="#">Cancel</a>
+										    <a class="dropdown-item" href="#">Dispute</a>
+										  </div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>$250.00 USD</td>
+									<td>Wordpress Conversion</td>
+									<td>In Progress</td>
+									<td>
+									  	<div class="btn-group">
+										  <button class="btn btn-secondary btn-sm" type="button">
+										    Ask Release
+										  </button>
+										  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <div class="dropdown-menu">
+										    <a class="dropdown-item" href="#">Ask Release</a>
+										    <a class="dropdown-item" href="#">Cancel</a>
+										    <a class="dropdown-item" href="#">Dispute</a>
+										  </div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>$350.00 USD</td>
+									<td>Final QA</td>
+									<td>In Progress</td>
+									<td>
+									  	<div class="btn-group">
+										  <button class="btn btn-secondary btn-sm" type="button">
+										    Ask Release
+										  </button>
+										  <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										    <span class="sr-only">Toggle Dropdown</span>
+										  </button>
+										  <div class="dropdown-menu">
+										    <a class="dropdown-item" href="#">Ask Release</a>
+										    <a class="dropdown-item" href="#">Cancel</a>
+										    <a class="dropdown-item" href="#">Dispute</a>
+										  </div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Total: 1300 USD</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock content %}

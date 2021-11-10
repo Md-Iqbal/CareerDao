@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<section id="post-project">
+		<div class="container">
+			<div class="post-project">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<form class="submit-info">
+							<div class="need-info">
+								<p class="info-title">What do you need to get done?</p>
+								<p class="tooltip-icon"><a href="#"><i class="fas fa-question-circle"></i></a></p>
+								<input type="text" class="form-control" placeholder="e.g. I need a professional website design">
+							</div>
+							<div class="pick-category">
+								<p class="info-title">Pick Category</p>
+								<ul>
+									<li>
+										<div class="form-group select-work-type">
+										    <select class="custom-select">
+										      <option value="">Graphic Design</option>
+										      <option value="1">Web Design</option>
+										      <option value="2">Web Development</option>
+										    </select>
+								 		</div>
+									</li>
+									<li>
+										<div class="form-group select-location">
+										    <input type="text" placeholder="Address">
+								 		</div>
+									</li>
+								</ul>
+							</div>
+							<div class="get-description">
+								<p class="info-title">Description</p>
+								<p class="tooltip-icon"><a href="#"><i class="fas fa-question-circle"></i></a></p>
+								<textarea class="form-control" cols="30" rows="10" placeholder="Provide a more detailed description to help you get better proposals"></textarea>
+							</div>
+							<div class="file-upload-btn clearfix">
+								<div class="file-upload">
+								    <label for="upload" class="file-upload__label"><i class="fas fa-plus"></i> Upload Files</label>
+								    <input id="upload" class="file-upload__input" type="file" name="file-upload">
+								</div>
+								<p>Drag & Drop any images or documents that might be helpful in explaining your project brief here.</p>
+							</div>
+							<div class="get-job-buttons">
+								<div class="row">
+									<div class="col-sm-12 col-md-3 col-lg-3">
+										<div class="work-type">
+											<p class="info-title">Work Type</p><br>
+											<div class="form-group select-work-type">
+											    <select class="custom-select">
+											      <option value="">Fixed Price</option>
+											      <option value="1">Hourly</option>
+											      <option value="2">Contest</option>
+											    </select>
+								 			</div>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-2 col-lg-2">
+										<p class="info-title">Currency</p>
+										<p class="tooltip-icon"><a href="#"><i class="fas fa-question-circle"></i></a></p>
+										<div class="form-group select-currency">
+										    <select class="custom-select">
+										      <option value="">USD</option>
+										      <option value="1">CAD</option>
+										      <option value="2">AUD</option>
+										      <option value="3">BDT</option>
+										    </select>
+								 		</div>
+									</div>
+									<div class="col-sm-12 col-md-7 col-lg-7">
+										<p class="info-title">Budget</p>
+										<p class="tooltip-icon"><a href="#"><i class="fas fa-question-circle"></i></a></p>
+										<div class="form-group big-budget">
+										    <select class="custom-select">
+										      <option value="">Very Large project ($10000-20000 USD)</option>
+										      <option value="1">Very Large project ($20000-30000 USD)</option>
+										      <option value="2">Very Large project ($30000-40000 USD)</option>
+										      <option value="3">Very Large project ($40000-50000 USD)</option>
+										    </select>
+								 		</div>
+									</div>
+								</div>
+							</div>
+							<div class="experience-level">
+								<p class="info-title">Experience Level</p>
+								<div class="row">
+									<div class="col-sm-12 col-md-4 col-lg-4 xpbox">
+										<input class="form-control" name="optradio" id="entry" type="radio" value="1">
+										<label for="entry">
+											<div class="header">Entry</div>
+											<div class="body">
+												Freelancers with lower rates and less experience
+												<span class="symbols">$</span>
+											</div>
+										</label>
+									</div>
+									<div class="col-sm-12 col-md-4 col-lg-4 xpbox">
+										<input class="form-control" name="optradio" id="intermediate" type="radio" value="2">
+										<label for="intermediate">
+											<div class="header">Intermediate</div>
+											<div class="body">
+												Freelancers with lower rates and less experience
+												<span class="symbols">$$</span>
+											</div>
+										</label>
+									</div>
+									<div class="col-sm-12 col-md-4 col-lg-4 xpbox">
+										<input class="form-control" name="optradio" id="expert" type="radio" value="3">
+										<label for="expert">
+											<div class="header">Expert</div>
+											<div class="body">
+												Freelancers with lower rates and less experience
+												<span class="symbols">$$$</span>
+											</div>
+										</label>
+									</div>
+									<div class="post-job-btn">
+										<a href="#" class="button-ymp">Post job</a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock content %}

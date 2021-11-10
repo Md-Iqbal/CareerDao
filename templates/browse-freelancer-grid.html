@@ -1,0 +1,543 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<section id="browse-freelancer-grid">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="buttons-container">
+						<ul class="list-grid-btn">
+							<li>View : </li>
+							<li>
+								<form action="https://htmlbro.com/html/chakri/browse-freelancer-list.html">
+									<button class="view-btn list-view" id="list" onclick="listView()"><i class="fas fa-bars"></i></button>
+								</form>
+							</li>
+							<li>
+								<button class="view-btn active grid-view" id="grid" onclick="gridView()"><i class="fas fa-th-large"></i></button>
+							</li>
+						</ul>
+						<ul class="sort-options">
+							<li>Sort By :</li>
+							<li>
+								<select name="sort-job" id="sort-lists">
+									<option value="Newest">Newest</option>
+									<option value="Oldest">Oldest</option>
+								</select>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-1.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Mr. Robert</h5>
+								<h5 class="designation">UI/UX Designer </h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$85/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">105</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-2.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Rafsan Prodhan</h5>
+								<h5 class="designation">Web developer </h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$80/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">110</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-8.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Sahinur Salafee</h5>
+								<h5 class="designation">Web Designer</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$79/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">100</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-3.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Charli Brown</h5>
+								<h5 class="designation">Motion Artist</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$79/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">100</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-9.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Mr. Robert</h5>
+								<h5 class="designation">UI/UX Designer</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$78/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">82</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-10.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Rafsan Prodhan</h5>
+								<h5 class="designation">UI/UX Designer</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$70/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">70</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-11.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Charli Brown</h5>
+								<h5 class="designation">Graphics Designer</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$71/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">75</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-12.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Charli Brown</h5>
+								<h5 class="designation">Motion Artist</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$70/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">82</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-13.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Sahinur Salafee</h5>
+								<h5 class="designation">Web Designer</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$60/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">85</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-14.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Mr. Robert</h5>
+								<h5 class="designation">Motion Artist</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$65/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">65</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-15.jpg" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Charli Brown</h5>
+								<h5 class="designation">Web Developer</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$65/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">65</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<article class="freelancers freelancer-grid-view">
+						<div class="feature-image">
+							<img src="{% static '' %}img/freelancer/freelancer-16.html" alt="">	
+							<div class="name-designation">
+								<h5 class="name">Mr. Robert</h5>
+								<h5 class="designation">Motion Artist</h5>
+							</div>
+							<span class="online"></span>
+						</div>
+						<div class="rate-hire">
+							<div class="rate">
+								<p>Rate : <span>$65/hr</span></p>
+							</div>
+							<div class="hire-button">
+								<a href="#" class="hire-btn">Hire Me</a>
+							</div>
+						</div>
+						<div class="review-details">
+							<ul class="review">
+								<li class="point">5.0</li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li><span class="star"><i class="fas fa-star"></i></span></li>
+								<li>(<span class="amount">65</span> Reviews)</li>
+							</ul>
+						</div>
+						<div class="contact-details">
+							<ul>
+								<li><span class="verified">Verified</span></li>
+								<li><a href="#"><i class="fas fa-dollar-sign"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+								<li class="address-book"><a href="#"><i class="fas fa-address-book"></i></a></li>
+								<li class="phone"><a href="#"><i class="fas fa-phone"></i></a></li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="pagination-area">
+						<ul>
+							<li>
+								<a href="#"><i class="fas fa-chevron-left"></i></a>
+							</li>
+							<li>
+								<a href="#">1</a>
+							</li>
+							<li>
+								<a href="#">2</a>
+							</li>
+							<li>
+								<a href="#">3</a>
+							</li>
+							<li>
+								<a href="#">4</a>
+							</li>
+							<li>
+								<a href="#">5</a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock content %}
