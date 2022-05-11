@@ -1,17 +1,19 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+# @login_required
 def HomeView(request):
     return render(request, 'index.html')
 
 
-def GuestView(request):
-    return render(request, 'index-guest.html')
+# def RegisterView(request):
+#     return render(request, 'register.html')
 
 
 def LiveChatView(request):
-    return render(request, 'chatting.html')
+    return render(request, 'dashboard-messages.html')
 
 
 def ProjectAcceptView(request):
@@ -31,7 +33,7 @@ def ProjectMilestoneView(request):
 
 
 def FeatureJobOfflineGridView(request):
-    return render(request, 'feature-job-offline-grid.html')
+    return render(request, 'jobs-grid-layout-full-page.html')
 
 
 def FeatureJobOfflineListView(request):
@@ -55,7 +57,7 @@ def PostJobOfflineView(request):
 
 
 def PostJobOnlineView(request):
-    return render(request, 'post-job-online.html')
+    return render(request, 'dashboard-post-a-job.html')
 
 
 def FreelancerGridView(request):
@@ -97,3 +99,9 @@ def Blog_with_SidebarView(request):
 def ProfileView(request):
     return render(request, 'freelancer-profile-portfolio.html')
 
+
+def UnknownURLView(request):
+    return render(request, 'pages-404.html')
+
+def EmailVerificationNotificationView(request):
+    return render(request, 'email-verification-notification.html')

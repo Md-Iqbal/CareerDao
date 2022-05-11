@@ -2,529 +2,651 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from htmlbro.com/html/chakri/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Jun 2021 08:50:55 GMT -->
+<!-- Mirrored from www.vasterad.com/themes/hireo/index-logged-out.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Nov 2021 11:26:33 GMT -->
 
 <head>
+
+    <!-- Basic Page Needs
+================================================== -->
+    <title>Hireo</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="application-name" content="">
-    <meta name="description" content="">
-    <title>Index Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" href="{% static '' %}dist/css/vendor/bootstrap.min.css">
-
-    <link rel="stylesheet" href="{% static '' %}dist/css/vendor/font-awesome/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="{% static '' %}dist/css/vendor/slick-theme.css">
-    <link rel="stylesheet" href="{% static '' %}dist/css/vendor/slick.css">
-
-    <link rel="stylesheet" href="{% static '' %}dist/css/main.css">
+    <!-- CSS
+================================================== -->
+    <link rel="stylesheet" href="{% static '' %}css/style.css">
+    <link rel="stylesheet" href="{% static '' %}css/colors/blue.css">
+    <link ref="stylesheet" type="text/css" href="{% static '' %}css/snackbar.min.css">
+    <script src="{% static '' %}js/jquery-3.4.1.min.js"></script>
+    <script src="{% static '' %}js/jquery-migrate-3.1.0.min.html"></script>
 </head>
 
 <body>
-    <header class="index-nav">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-sm-12 col-md-8 primary-menu order-sm-1 order-2">
-                    <nav class="navbar navbar-expand-lg">
-                        <div class="navbar-brand">
-                            <a class="logo js-scroll-trigger" href="{% url 'HomeView' %}"><img src="{% static '' %}img/logo.png"
-                                    alt=""></a>
-                            <a class="s-logo js-scroll-trigger" href="{% url 'HomeView' %}"><img
-                                    src="{% static '' %}img/logo2.png" alt=""></a>
-                        </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'error' %}
+    <div class="status-switch" id="snackbar-user-status">
+        <strong>Danger!</strong>
+        {{ message }}
+    </div>
+    {% elif message.tags == 'success' %}
+    <div class="alert alert-success">
+        <strong>Success!</strong>
+        {{ message }}
+    </div>
+    {% elif message.tags == 'warning' %}
+    <div class="alert alert-warning">
+        <strong>Warning!</strong>
+        {{ message }}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <!-- Wrapper -->
+    <div id="wrapper" class="wrapper">
 
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item dropdown menu-padding">
-                                    <a class="nav-link active" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">Home</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="{% url 'GuestView' %}"
-                                                class="dropdown-item">Home(Without Login)</a></li>
-                                        <li class="nav-item"><a href="{% url 'LiveChatView' %}" class="dropdown-item">Live Chat</a>
+        <!-- Header Container
+================================================== -->
+        <header id="header-container" class="fullwidth">
+
+            <!-- Header -->
+            <div id="header">
+                <div class="container">
+
+                    <!-- Left Side Content -->
+                    <div class="left-side">
+
+                        <!-- Logo -->
+                        <div id="logo">
+                            <a href="{% url 'HomeView' %}"><img src="{% static '' %}images/logo.png" alt=""></a>
+                        </div>
+
+                        <!-- Main Navigation -->
+                        <nav id="navigation">
+                            <ul id="responsive">
+
+                                <li><a href="#" class="current">Home</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="{% url 'HomeView' %}">Home 1</a></li>
+                                        <li><a href="index-2.html">Home 2</a></li>
+                                        <li><a href="index-3.html">Home 3</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">Find Work</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="#">Browse Jobs</a>
+                                            <ul class="dropdown-nav">
+                                                <li><a href="{% url 'FeatureJobOfflineGridView' %}">Full Page List +
+                                                        Map</a></li>
+                                                <li><a href="jobs-grid-layout-full-page-map.html">Full Page Grid +
+                                                        Map</a></li>
+                                                <li><a href="jobs-grid-layout-full-page.html">Full Page Grid</a></li>
+                                                <li><a href="jobs-list-layout-1.html">List Layout 1</a></li>
+                                                <li><a href="jobs-list-layout-2.html">List Layout 2</a></li>
+                                                <li><a href="jobs-grid-layout.html">Grid Layout</a></li>
+                                            </ul>
                                         </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown menu-padding">
-                                    <a class="nav-link" href="" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">Find Work</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="{% url 'ProjectAcceptView' %}" class="dropdown-item">Project
-                                                Accept</a></li>
-                                        <li class="nav-item"><a href="{% url 'ProjectAwardView' %}" class="dropdown-item">Project
-                                                Award</a></li>
-                                        <li class="nav-item"><a href="{% url 'ProjectBiddingView' %}" class="dropdown-item">Project
-                                                bidding</a></li>
-                                        <li class="nav-item"><a href="{% url 'ProjectMilestoneView' %}"
-                                                class="dropdown-item">Project Milestone</a></li>
-                                        <li class="nav-item"><a href="{% url 'FeatureJobOfflineGridView' %}"
-                                                class="dropdown-item">Feature Job Offline Grid</a></li>
-                                        <li class="nav-item"><a href="{% url 'FeatureJobOfflineListView' %}"
-                                                class="dropdown-item">Feature Job Offline List</a></li>
-                                        <li class="nav-item"><a href="{% url 'FeatureJobOnlineListView' %}"
-                                                class="dropdown-item">Feature Job Online List</a></li>
-                                        <li class="nav-item"><a href="{% url 'FeatureJobOnline_with_SidebarView' %}"
-                                                class="dropdown-item">Feature Job Online with Sidebar</a></li>
-                                        <li class="nav-item"><a href="{% url 'FeatureJobOnline_with_MapView' %}"
-                                                class="dropdown-item">Feature Job Online with Map</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown menu-padding">
-                                    <a class="nav-link" href="" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">Hire Freelancer</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="{% url 'PostJobOfflineView' %}" class="dropdown-item">Post
-                                                Job Offline</a></li>
-                                        <li class="nav-item"><a href="{% url 'PostJobOnlineView' %}" class="dropdown-item">Post
-                                                Job Online</a></li>
-                                        <li class="nav-item"><a href="{% url 'FreelancerGridView' %}"
-                                                class="dropdown-item">Freelancer Grid</a></li>
-                                        <li class="nav-item"><a href="{% url 'FreelancerGrid_with_SidebarView' %}"
-                                                class="dropdown-item">Freelancer Grid with sidebar</a></li>
-                                        <li class="nav-item"><a href="{% url 'FreelancerListView' %}"
-                                                class="dropdown-item">Freelancer List</a></li>
-                                        <li class="nav-item"><a href="{% url 'FreelancerList_with_SidebarView' %}"
-                                                class="dropdown-item">Freelancer List with sidebar</a></li>
-                                        <li class="nav-item"><a href="{% url 'DisputeView' %}"
-                                                class="dropdown-item">Dispute</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown menu-padding">
-                                    <a class="nav-link" href="{% url 'DashboardView' %}">Dashboard</a>
-                                </li>
-                                <li class="nav-item dropdown menu-padding">
-                                    <a class="nav-link" href="" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">Blog</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="{% url 'BlogSinglePostView' %}" class="dropdown-item">Single Post</a>
+                                        <li><a href="#">Browse Tasks</a>
+                                            <ul class="dropdown-nav">
+                                                <li><a href="tasks-list-layout-1.html">List Layout 1</a></li>
+                                                <li><a href="tasks-list-layout-2.html">List Layout 2</a></li>
+                                                <li><a href="tasks-grid-layout.html">Grid Layout</a></li>
+                                                <li><a href="tasks-grid-layout-full-page.html">Full Page Grid</a></li>
+                                            </ul>
                                         </li>
-                                        <li class="nav-item"><a href="{% url 'BlogGridView' %}" class="dropdown-item">Blog
-                                                Grid</a></li>
-                                        <li class="nav-item"><a href="{% url 'Blog_with_SidebarView' %}"
-                                                class="dropdown-item">Blog-With Sidebar</a></li>
+                                        <li><a href="browse-companies.html">Browse Companies</a></li>
+                                        <li><a href="single-job-page.html">Job Page</a></li>
+                                        <li><a href="single-task-page.html">Task Page</a></li>
+                                        <li><a href="single-company-profile.html">Company Profile</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'LiveChatView' %}">Contact</a>
+
+                                <li><a href="#">For Employers</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="#">Find a Freelancer</a>
+                                            <ul class="dropdown-nav">
+                                                <li><a href="freelancers-grid-layout-full-page.html">Full Page Grid</a>
+                                                </li>
+                                                <li><a href="freelancers-grid-layout.html">Grid Layout</a></li>
+                                                <li><a href="freelancers-list-layout-1.html">List Layout 1</a></li>
+                                                <li><a href="freelancers-list-layout-2.html">List Layout 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="single-freelancer-profile.html">Freelancer Profile</a></li>
+                                        <li><a href="{% url 'PostJobOnlineView' %}">Post a Job</a></li>
+                                        <li><a href="dashboard-post-a-task.html">Post a Task</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">Dashboard</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="dashboard.html">Dashboard</a></li>
+                                        <li><a href="{% url 'LiveChatView' %}">Messages</a></li>
+                                        <li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
+                                        <li><a href="dashboard-reviews.html">Reviews</a></li>
+                                        <li><a href="dashboard-manage-jobs.html">Jobs</a>
+                                            <ul class="dropdown-nav">
+                                                <li><a href="dashboard-manage-jobs.html">Manage Jobs</a></li>
+                                                <li><a href="dashboard-manage-candidates.html">Manage Candidates</a>
+                                                </li>
+                                                <li><a href="dashboard-post-a-job.html">Post a Job</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="dashboard-manage-tasks.html">Tasks</a>
+                                            <ul class="dropdown-nav">
+                                                <li><a href="dashboard-manage-tasks.html">Manage Tasks</a></li>
+                                                <li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
+                                                <li><a href="dashboard-my-active-bids.html">My Active Bids</a></li>
+                                                <li><a href="dashboard-post-a-task.html">Post a Task</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="dashboard-settings.html">Settings</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown-nav">
+                                        <li>
+                                            <a href="#">Open Street Map</a>
+                                            <ul class="dropdown-nav">
+                                                <li><a href="jobs-list-layout-full-page-map-OpenStreetMap.html">Full
+                                                        Page List + Map</a></li>
+                                                <li><a href="jobs-grid-layout-full-page-map-OpenStreetMap.html">Full
+                                                        Page Grid + Map</a></li>
+                                                <li><a href="single-job-page-OpenStreetMap.html">Job Page</a></li>
+                                                <li><a href="single-company-profile-OpenStreetMap.html">Company
+                                                        Profile</a></li>
+                                                <li><a href="pages-contact-OpenStreetMap.html">Contact</a></li>
+                                                <li><a href="jobs-list-layout-1-OpenStreetMap.html">Location
+                                                        Autocomplete</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="pages-blog.html">Blog</a></li>
+                                        <li><a href="pages-pricing-plans.html">Pricing Plans</a></li>
+                                        <li><a href="pages-checkout-page.html">Checkout Page</a></li>
+                                        <li><a href="pages-invoice-template.html">Invoice Template</a></li>
+                                        <li><a href="pages-user-interface-elements.html">User Interface Elements</a>
+                                        </li>
+                                        <li><a href="pages-icons-cheatsheet.html">Icons Cheatsheet</a></li>
+                                        <li><a href="pages-login.html">Login & Register</a></li>
+                                        <li><a href="pages-404.html">404 Page</a></li>
+                                        <li><a href="pages-contact.html">Contact</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </nav>
+                        <div class="clearfix"></div>
+                        <!-- Main Navigation / End -->
+
+                    </div>
+                    <!-- Left Side Content / End -->
+
+
+                    <!-- Right Side Content / End -->
+                    
+                    <!-- <div class="right-side">
+                        <nav id="navigation">
+                            <ul id="responsive">
+                                <li><a href="#">Account</a>
+                                    <ul class="dropdown-nav">
+                                        <li><a href="{% url 'HomeView' %}">Dashboard</a></li>
+                                        <li><a href="index-2.html">Edit Details</a></li>
+                                        <li><a href="/api/v1/auth/logout/">Logout</a></li>
+                                    </ul>
                                 </li>
                             </ul>
+                        </nav>
+                    </div> -->
+                    
+                    <div class="right-side">
+                    
+                        <div class="header-widget">
+                            <a href="#sign-in-dialog" class="popup-with-zoom-anim log-in-button"><i class="icon-feather-log-in"></i>
+                                <span>Log In / Register</span></a>
                         </div>
-                    </nav>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 header-notification order-sm-2 order-1">
-                    <nav class="navbar navbar-expand-lg">
-                        <ul class="navbar-nav ml-auto right-menu">
-                            <li class="nav-item">
-                                <a class="nav-link bell" href="#" data-toggle="modal" data-target="#notification"><i
-                                        class="far fa-bell"></i>
-                                    <span>25</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link message" href="#" data-toggle="modal"
-                                    data-target="#unread-messages"><i class="far fa-envelope"></i>
-                                    <span>05</span>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown menu-padding dropdown-user">
-                                <a class="nav-link user-img" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false"><img src="{% static '' %}img/user.png" alt="">
-                                    <span class="online"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a href="{% url 'ProfileView' %}"
-                                            class="dropdown-item">Profile</a></li>
-                                    <li class="nav-item"><a href="{% url 'LiveChatView' %}" class="dropdown-item">Message</a></li>
-                                    <li class="nav-item"><a href="#" class="dropdown-item">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
+                    
+                        <!-- Mobile Navigation Button -->
+                        <span class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </span>
+                    
+                    </div>
+                    <!-- Right Side Content / End -->
+
                 </div>
             </div>
-        </div>
-    </header>
-    <!-- Modal Message -->
-    <section class="modals">
-        <div class="container">
-            <div class="modal fade" id="unread-messages" role="dialog" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content unread-messages">
-                        <div class="modal-body">
-                            <div class="chatting-page">
-                                <div class="chat-freelancers">
-                                    <div class="users">
-                                        <ul>
-                                            <li class="active">
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user1.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="user-details">
-                                                    <p><a href="#">Amazingsoftware</a></p>
-                                                    <p><a href="#" class="project-name">Multi Vendor Website</a></p>
-                                                </div>
-                                            </li>
-                                            <li class="active">
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user2.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="user-details">
-                                                    <p><a href="#">John65</a></p>
-                                                    <p><a href="#" class="project-name">Write Some Software</a></p>
-                                                </div>
-                                            </li>
-                                            <li class="active">
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user3.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="user-details">
-                                                    <p><a href="#">BabyGirl</a></p>
-                                                    <p><a href="#" class="project-name">Create Powerpoint Templete</a>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li class="active">
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user3.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="user-details">
-                                                    <p><a href="#">MarketingWizard</a></p>
-                                                    <p><a href="#" class="project-name">Write code get google drive</a>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li class="active">
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user4.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="user-details">
-                                                    <p><a href="#">Jenelia</a></p>
-                                                    <p><a href="#" class="project-name">Google Write Code</a></p>
-                                                </div>
-                                            </li>
-                                        </ul>
+            <!-- Header / End -->
+
+        </header>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+        {% block content %}
+
+        {% endblock content %}
+        <!-- Footer
+        ================================================== -->
+        <div id="footer">
+
+            <!-- Footer Top Section -->
+            <div class="footer-top-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+
+                            <!-- Footer Rows Container -->
+                            <div class="footer-rows-container">
+
+                                <!-- Left Side -->
+                                <div class="footer-rows-left">
+                                    <div class="footer-row">
+                                        <div class="footer-row-inner footer-logo">
+                                            <img src="{% static '' %}images/logo2.png" alt="">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Modal Notification -->
-    <section class="modals">
-        <div class="container">
-            <div class="modal fade" id="notification" role="dialog" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content unread-notification">
-                        <div class="modal-body">
-                            <div class="chatting-page">
-                                <div class="chat-freelancers">
-                                    <div class="users">
-                                        <ul>
-                                            <li>
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user1.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="notification-details">
-                                                    <p class="notification-text"><b>Rafsan</b> released a $300.00 USD
-                                                        milestone payment for project <b>Website Designing</b></p>
-                                                    <p class="notification-time">About 20 minutes ago</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user2.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="notification-details">
-                                                    <p class="notification-text"><b>John Deo</b> released a $450.00 USD
-                                                        milestone payment for project <b>Website Development</b></p>
-                                                    <p class="notification-time">About 40 minutes ago</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user3.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="notification-details">
-                                                    <p class="notification-text"><b>Denial Cook</b> released a $550.00
-                                                        USD milestone payment for project <b>Graphic Design</b></p>
-                                                    <p class="notification-time">About 50 minutes ago</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user4.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="notification-details">
-                                                    <p class="notification-text"><b>Mikel</b> released a $700.00 USD
-                                                        milestone payment for project <b>Logo Design</b></p>
-                                                    <p class="notification-time">About 1 hour ago</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="user-img">
-                                                    <img src="{% static '' %}img/chatting/user5.jpg" alt="">
-                                                    <span class="online-icon"><i
-                                                            class="icofont icofont-ui-press"></i></span>
-                                                </div>
-                                                <div class="notification-details">
-                                                    <p class="notification-text"><b>Reek</b> released a $850.00 USD
-                                                        milestone payment for project <b>Wordpress Development</b></p>
-                                                    <p class="notification-time">About 1 hour 20 minutes ago</p>
-                                                </div>
-                                            </li>
-                                        </ul>
+
+                                <!-- Right Side -->
+                                <div class="footer-rows-right">
+
+                                    <!-- Social Icons -->
+                                    <div class="footer-row">
+                                        <div class="footer-row-inner">
+                                            <ul class="footer-social-links">
+                                                <li>
+                                                    <a href="#" title="Facebook" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Twitter" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Google Plus" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-google-plus-g"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="LinkedIn" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-linkedin-in"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Language Switcher -->
+                                    <div class="footer-row">
+                                        <div class="footer-row-inner">
+                                            <select class="selectpicker language-switcher"
+                                                data-selected-text-format="count" data-size="5">
+                                                <option selected>English</option>
+                                                <option>Français</option>
+                                                <option>Español</option>
+                                                <option>Deutsch</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
+                            <!-- Footer Rows Container / End -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <!-- Footer Top Section / End -->
 
+            <!-- Footer Middle Section -->
+            <div class="footer-middle-section">
+                <div class="container">
+                    <div class="row">
 
-    {% block content %}
-
-    {% endblock content %}
-
-
-    <section id="followers">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-2 col-sm-12"></div>
-                <div class="col-lg-6 col-md-8 col-sm-12">
-                    <div class="follow-details">
-                        <div class="follow">
-                            <span class="icon facebook"><i class="fab fa-facebook-f"></i></span>
-                            <div class="followers">
-                                <span class="amount">1,47,570</span>
-                                <p>Followers</p>
-                            </div>
-                        </div>
-                        <div class="follow">
-                            <span class="icon twitter"><i class="fab fa-twitter"></i></span>
-                            <div class="followers">
-                                <span class="amount">1,49,580</span>
-                                <p>Followers</p>
-                            </div>
-                        </div>
-                        <div class="follow">
-                            <span class="icon envelope"><i class="far fa-envelope-open"></i></span>
-                            <div class="followers">
-                                <span class="amount">1,48,770</span>
-                                <p>Followers</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-2 col-sm-12"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12"></div>
-                <div class="col-lg-2 col-md-2 col-sm-12">
-                    <div class="verify-image">
-                        <img src="{% static '' %}/img/verify/verify1.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12">
-                    <div class="verify-image">
-                        <img src="{% static '' %}img/verify/verify2.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12">
-                    <div class="verify-image">
-                        <img src="{% static '' %}img/verify/verify3.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12"></div>
-            </div>
-        </div>
-    </section>
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="footer-subscribe">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                                <p class="subscribe-text">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting
-                                    dummy text ever since the 1500s</p>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                                <div class="subscribe-form-pt">
-                                    <!-- Begin Mailchimp Signup Form -->
-                                    <div id="mc_embed_signup">
-                                        <form
-                                            action="https://awardorb.us17.list-manage.com/subscribe/post?u=40bdb138dfb2d7c92d79ef6cb&amp;id=78778cd267"
-                                            method="post" id="mc-embedded-subscribe-form"
-                                            name="mc-embedded-subscribe-form" class="validate" target="_blank"
-                                            novalidate>
-                                            <div id="mc_embed_signup_scroll">
-                                                <div class="mc-field-group">
-                                                    <input placeholder="Type your Email" type="email" value=""
-                                                        name="EMAIL" class="required email" id="mce-EMAIL">
-                                                </div>
-                                                <div id="mce-responses" class="clear">
-                                                    <div class="response" id="mce-error-response"></div>
-                                                    <div class="response" id="mce-success-response"></div>
-                                                </div>
-                                                <div class="clear">
-                                                    <button type="submit" id="mc-embedded-subscribe" name="subscribe"
-                                                        class="btn-search-pt button"><i
-                                                            class="fas fa-paper-plane"></i></button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--End mc_embed_signup-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="widget-area">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget">
-                                    <h5 class="widget-title">Browse Categories</h5>
-                                    <ul>
-                                        <li><a href="#">WordPress Themes</a></li>
-                                        <li><a href="#">HTML5 Templates</a></li>
-                                        <li><a href="#">UI Design (PSD)</a></li>
-                                        <li><a href="#">Free Downloads</a></li>
-                                        <li><a href="#">1 Click Install</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget">
-                                    <h5 class="widget-title">How To Buy</h5>
-                                    <ul>
-                                        <li><a href="#">Explore Products</a></li>
-                                        <li><a href="#">Create Account</a></li>
-                                        <li><a href="#">Sign In</a></li>
-                                        <li><a href="#">Payments</a></li>
-                                        <li><a href="#">FAQ</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget">
-                                    <h5 class="widget-title">Features</h5>
-                                    <ul>
-                                        <li><a href="#">1 Click Install</a></li>
-                                        <li><a href="#">Custom Illustration</a></li>
-                                        <li><a href="#">Stock Footage</a></li>
-                                        <li><a href="#">Mockups</a></li>
-                                        <li><a href="#">Mobile First</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget">
-                                    <h5 class="widget-title">Help & Support</h5>
-                                    <ul>
-                                        <li><a href="#">Contact Us</a></li>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                        <li><a href="#">Meet The Team</a></li>
-                                        <li><a href="#">Support Center</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <section id="copyright-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="copyright-area">
-                        <div class="copyright-wrapper">
-                            <div class="copyright-text">
-                                © 2019 Chakri | Developed by <a href="https://premiumtheme.org/">PremiumTheme.org</a>
-                            </div>
-                            <div class="footer-nav">
-                                <ul id="menu-footer-nav" class="footer_nav">
-                                    <li id="menu-item-439"
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-439"><a
-                                            href="#">Terms &amp; Condition</a></li>
-                                    <li id="menu-item-440"
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-440"><a
-                                            href="#">Privacy Policy</a></li>
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>For Candidates</h3>
+                                <ul>
+                                    <li><a href="#"><span>Browse Jobs</span></a></li>
+                                    <li><a href="#"><span>Add Resume</span></a></li>
+                                    <li><a href="#"><span>Job Alerts</span></a></li>
+                                    <li><a href="#"><span>My Bookmarks</span></a></li>
                                 </ul>
                             </div>
                         </div>
+
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>For Employers</h3>
+                                <ul>
+                                    <li><a href="#"><span>Browse Candidates</span></a></li>
+                                    <li><a href="#"><span>Post a Job</span></a></li>
+                                    <li><a href="#"><span>Post a Task</span></a></li>
+                                    <li><a href="#"><span>Plans & Pricing</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>Helpful Links</h3>
+                                <ul>
+                                    <li><a href="#"><span>Contact</span></a></li>
+                                    <li><a href="#"><span>Privacy Policy</span></a></li>
+                                    <li><a href="#"><span>Terms of Use</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>Account</h3>
+                                <ul>
+                                    <li><a href="#"><span>Log In</span></a></li>
+                                    <li><a href="#"><span>My Account</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter -->
+                        <div class="col-xl-4 col-lg-4 col-md-12">
+                            <h3><i class="icon-feather-mail"></i> Sign Up For a Newsletter</h3>
+                            <p>Weekly breaking news, analysis and cutting edge advices on job searching.</p>
+                            <form action="#" method="get" class="newsletter">
+                                <input type="text" name="fname" placeholder="Enter your email address">
+                                <button type="submit"><i class="icon-feather-arrow-right"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <!-- Footer Middle Section / End -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{% static '' %}js/vendor/font-awesome.js"></script>
-    <script src="{% static '' %}js/vendor/popper.min.js"></script>
-    <script src="{% static '' %}js/vendor/jquery-3.3.1.slim.min.js"></script>
-    <script src="{% static '' %}js/vendor/bootstrap.min.js"></script>
-    <script src="{% static '' %}js/vendor/jquery.min.js"></script>
-    <script src="{% static '' %}js/vendor/jquery.easing.min.js"></script>
-    <script src="{% static '' %}js/vendor/slick.min.js"></script>
-    <script src="{% static '' %}js/vendor/jquery-migrate-1.2.1.min.js"></script>
-	<script src="{% static '' %}js/vendor/chart.min.js"></script>
-    <script src="{% static '' %}js/index.js"></script>
-	<script src="{% static '' %}js/chart.js"></script>
-	<script src="{% static '' %}js/bid-milestone.js"></script>
-    <!-- for map section -->
-  	<script src="{% static '' %}js/vendor/jquery-ui.min.js"></script>
-  	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script src="{% static '' %}js/map.js"></script>
-  	<script src="{% static '' %}js/range.js"></script>
-    <!-- for profile section -->
-  	<script src="{% static '' %}js/vendor/isotope.pkgd.min.js"></script>
-  	<script src="{% static '' %}js/vendor/imagesloaded.pkgd.min.js"></script>
-  	<script src="{% static '' %}js/portfolio.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123129359-1"></script>
+            <!-- Footer Copyrights -->
+            <div class="footer-bottom-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            © 2019 <strong>Hireo</strong>. All Rights Reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Copyrights / End -->
+
+        </div>
+        <!-- Footer / End -->
+
+    </div>
+    <!-- Wrapper / End -->
+    <!-- Sign In Popup
+================================================== -->
+    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+
+        <!--Tabs -->
+        <div class="sign-in-form">
+
+            <ul class="popup-tabs-nav">
+                <li><a href="#login">Log In</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+
+            <div class="popup-tabs-container">
+
+                <!-- Login -->
+                <div class="popup-tab-content" id="login">
+
+                    <!-- Welcome Text -->
+                    <div class="welcome-text">
+                        <h3>We're glad to see you again!</h3>
+                        <span>Don't have an account? <a href="#" class="register-tab">Sign Up!</a></span>
+                    </div>
+
+                    <!-- Form -->
+                    <form method="post" id="login-form">
+                        {% csrf_token %}
+                        
+                        <input type="hidden" name="next" value="{{ request.path }}">
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-baseline-mail-outline"></i>
+                            <input type="text" class="input-text with-border" name="emailaddress" id="emailaddress"
+                                placeholder="Email Address" required />
+                        </div>
+
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-outline-lock"></i>
+                            <input type="password" class="input-text with-border" name="password" id="password"
+                                placeholder="Password" required />
+                        </div>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+
+                        <input type="submit" class="button full-width button-sliding-icon ripple-effect" value="Log In">
+                    </form>
+
+                    <!-- Social Login -->
+                    <div class="social-login-separator"><span>or</span></div>
+                    <div class="social-login-buttons">
+                        <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via
+                            Facebook</button>
+                        <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Log In via
+                            Google+</button>
+                    </div>
+
+                </div>
+
+                <!-- Register -->
+                <div class="popup-tab-content" id="register">
+
+                    <!-- Welcome Text -->
+                    <div class="welcome-text">
+                        <h3>Let's create your account!</h3>
+                    </div>
+
+                    <!-- Form -->
+                    <form method="POST" id="register-account-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" id="url_locator" value="{{ request.path }}">
+                        <!-- Account Type -->
+                        <div class="account-type">
+                            <div>
+                                <input type="radio" name="account-type-radio" id="freelancer-radio"
+                                    class="account-type-radio" checked />
+                                <label for="freelancer-radio" class="ripple-effect-dark"><i
+                                        class="icon-material-outline-account-circle"></i>
+                                    Freelancer</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="account-type-radio" id="project-manager-radio"
+                                    class="account-type-radio" />
+                                <label for="project-manager-radio" class="ripple-effect-dark"><i
+                                        class="icon-material-outline-account-circle"></i>
+                                    Project Mngr</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="account-type-radio" id="company-radio"
+                                    class="account-type-radio" />
+                                <label for="company-radio" class="ripple-effect-dark"><i
+                                        class="icon-material-outline-business-center"></i>
+                                    Company</label>
+                            </div>
+                        </div>
+
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-baseline-mail-outline"></i>
+                            <input type="text" class="input-text with-border" name="emailaddress-register"
+                                id="emailaddress-register" placeholder="Email Address" required />
+                        </div>
+
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-outline-account-circle"></i>
+                            <input type="text" class="input-text with-border" name="username-register"
+                                id="username-register" placeholder="Username" required />
+                        </div>
+
+                        <div class="input-with-icon-left" title="Should be at least 8 characters long"
+                            data-tippy-placement="bottom">
+                            <i class="icon-material-outline-lock"></i>
+                            <input type="password" class="input-text with-border" name="password-register"
+                                id="password-register" placeholder="Password" required />
+                        </div>
+
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-outline-lock"></i>
+                            <input type="password" class="input-text with-border" name="password-repeat-register"
+                                id="password-repeat-register" placeholder="Repeat Password" required />
+                        </div>
+
+                        <!-- Button -->
+                        <input type="submit" class="margin-top-10 button full-width button-sliding-icon ripple-effect"
+                            value="Register">
+                    </form>
+
+                    <!-- Social Login -->
+                    <div class="social-login-separator"><span>or</span></div>
+                    <div class="social-login-buttons">
+                        <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Register via
+                            Facebook</button>
+                        <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Register via
+                            Google+</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Sign In Popup / End -->
+
+    <!-- Scripts
+        ================================================== -->
+    <script src="{% static '' %}js/mmenu.min.js"></script>
+    <script src="{% static '' %}js/tippy.all.min.js"></script>
+    <script src="{% static '' %}js/simplebar.min.js"></script>
+    <script src="{% static '' %}js/bootstrap-slider.min.js"></script>
+    <script src="{% static '' %}js/bootstrap-select.min.js"></script>
+    <script src="{% static '' %}js/snackbar.js"></script>
+    <script src="{% static '' %}js/clipboard.min.js"></script>
+    <script src="{% static '' %}js/counterup.min.js"></script>
+    <script src="{% static '' %}js/magnific-popup.min.js"></script>
+    <script src="{% static '' %}js/slick.min.js"></script>
+    <script src="{% static '' %}js/custom.js"></script>
+
+    <!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+        // Snackbar for user status switcher
+        $('#snackbar-user-status label').click(function () {
+            Snackbar.show({
+                text: 'Your status has been changed!',
+                pos: 'bottom-center',
+                showAction: false,
+                actionText: "Dismiss",
+                duration: 3000,
+                textColor: '#fff',
+                backgroundColor: '#383838'
+            });
+        });
+    </script>
 
-        gtag('config', 'UA-123129359-1');
+
+    <!-- Google Autocomplete -->
+    <script>
+        function initAutocomplete() {
+            var options = {
+                types: ['(cities)'],
+                // componentRestrictions: {country: "us"}
+            };
+
+            var input = document.getElementById('autocomplete-input');
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
+        }
+
+        // Autocomplete adjustment for homepage
+        if ($('.intro-banner-search-form')[0]) {
+            setTimeout(function () {
+                $(".pac-container").prependTo(".intro-search-field.with-autocomplete");
+            }, 300);
+        }
+
+    </script>
+
+    <!-- Google API -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaoOT9ioUE4SA8h-anaFyU4K63a7H-7bc&amp;libraries=places&amp;callback=initAutocomplete"></script>
+    <script>
+        $(document).on('submit', '#register-account-form', function (e) {
+            e.preventDefault();
+            formArray = $(this).serializeArray();
+            var element = '';
+            var next = $('#url_locator').val();
+            var is_freelancer = $('#freelancer-radio').is(':checked');
+            var is_project_manager = $('#project-manager-radio').is(':checked');
+            var is_company = $('#company-radio').is(':checked');
+            var email = $('#emailaddress-register').val();
+            var username = $('#username-register').val();
+            var password = $('#password-register').val();
+            var password_repeat = $('#password-repeat-register').val();
+            // if (is_freelancer == true && is_project_manager == false && is_company == false){
+            //     is_freelancer = True;
+            //     is_project_manager = False;
+            //     is_company = False;
+            // } else if (is_freelancer == false && is_project_manager == true && is_company == false) {
+            //     is_freelancer = False;
+            //     is_project_manager = True;
+            //     is_company = False;
+            // } else if (is_freelancer == false && is_project_manager == false && is_company == true) {
+            //     is_freelancer = False;
+            //     is_project_manager = False;
+            //     is_company = True;
+            // } else {
+            //     is_freelancer = False;
+            //     is_project_manager = False;
+            //     is_company = False;
+            // }
+            var data = {
+                'next': next,
+                'csrfmiddlewaretoken': formArray[0]['value'],
+                'is_freelancer': is_freelancer,
+                'is_project_manager': is_project_manager,
+                'is_company': is_company,
+                'email': email,
+                'username': username,
+                'password': password,
+                'password_repeat': password_repeat
+            };
+            // console.log(formArray);
+            //print data to console
+            console.log('data: ', data);
+            $.ajax({
+                url: '{% url "sign-up" %}',
+                type: 'POST',
+                data: data,
+                success: function (data) {
+                    console.log(data);
+                    window.location.href = '{% url "EmailVerificationNotificationView" %}'
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        })
     </script>
 </body>
 
-<!-- Mirrored from htmlbro.com/html/chakri/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Jun 2021 09:00:30 GMT -->
+<!-- Mirrored from www.vasterad.com/themes/hireo/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Nov 2021 11:27:17 GMT -->
 
 </html>

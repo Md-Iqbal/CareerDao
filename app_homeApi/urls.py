@@ -2,8 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('home/', views.HomeView, name="HomeView"),
-    path('', views.GuestView, name="GuestView"),
+    path('', views.HomeView, name="HomeView"),
+#     path('/', views.HomeView, name="HomeView2"),
+#     path('register/', views.RegisterView, name="RegisterView"),
     path('chat/', views.LiveChatView, name="LiveChatView"),
     path('project-accept/', views.ProjectAcceptView, name="ProjectAcceptView"),
     path('project-award/', views.ProjectAwardView, name="ProjectAwardView"),
@@ -34,4 +35,6 @@ urlpatterns = [
     path('blog-sidebar/', views.Blog_with_SidebarView,
          name="Blog_with_SidebarView"),
     path('profile/', views.ProfileView, name="ProfileView"),
+    path('404/', views.UnknownURLView, name="UnknownURLView"),
+    path('verify-message/', views.EmailVerificationNotificationView, name="EmailVerificationNotificationView"),
 ]
