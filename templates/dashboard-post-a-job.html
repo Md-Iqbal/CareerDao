@@ -13,48 +13,58 @@
 
 				<!-- Responsive Navigation Trigger -->
 				<a href="#" class="dashboard-responsive-nav-trigger">
-					<span class="hamburger hamburger--collapse" >
+					<span class="hamburger hamburger--collapse">
 						<span class="hamburger-box">
 							<span class="hamburger-inner"></span>
 						</span>
 					</span>
 					<span class="trigger-title">Dashboard Navigation</span>
 				</a>
-				
+
 				<!-- Navigation -->
 				<div class="dashboard-nav">
 					<div class="dashboard-nav-inner">
 
 						<ul data-submenu-title="Start">
-							<li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-							<li><a href="dashboard-messages.html"><i class="icon-material-outline-question-answer"></i> Messages <span class="nav-tag">2</span></a></li>
-							<li><a href="dashboard-bookmarks.html"><i class="icon-material-outline-star-border"></i> Bookmarks</a></li>
-							<li><a href="dashboard-reviews.html"><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
+							<li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a>
+							</li>
+							<li><a href="dashboard-messages.html"><i class="icon-material-outline-question-answer"></i>
+									Messages <span class="nav-tag">2</span></a></li>
+							<li><a href="dashboard-bookmarks.html"><i class="icon-material-outline-star-border"></i>
+									Bookmarks</a></li>
+							<li><a href="dashboard-reviews.html"><i class="icon-material-outline-rate-review"></i>
+									Reviews</a></li>
 						</ul>
-						
+
 						<ul data-submenu-title="Organize and Manage">
-							<li class="active-submenu"><a href="#"><i class="icon-material-outline-business-center"></i> Jobs</a>
+							<li class="active-submenu"><a href="#"><i class="icon-material-outline-business-center"></i>
+									Jobs</a>
 								<ul>
-									<li><a href="dashboard-manage-jobs.html">Manage Jobs <span class="nav-tag">3</span></a></li>
+									<li><a href="dashboard-manage-jobs.html">Manage Jobs <span
+												class="nav-tag">3</span></a></li>
 									<li><a href="dashboard-manage-candidates.html">Manage Candidates</a></li>
 									<li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-								</ul>	
+								</ul>
 							</li>
 							<li><a href="#"><i class="icon-material-outline-assignment"></i> Tasks</a>
 								<ul>
-									<li><a href="dashboard-manage-tasks.html">Manage Tasks <span class="nav-tag">2</span></a></li>
+									<li><a href="dashboard-manage-tasks.html">Manage Tasks <span
+												class="nav-tag">2</span></a></li>
 									<li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
-									<li><a href="dashboard-my-active-bids.html">My Active Bids <span class="nav-tag">4</span></a></li>
+									<li><a href="dashboard-my-active-bids.html">My Active Bids <span
+												class="nav-tag">4</span></a></li>
 									<li><a href="dashboard-post-a-task.html">Post a Task</a></li>
-								</ul>	
+								</ul>
 							</li>
 						</ul>
 
 						<ul data-submenu-title="Account">
-							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
-							<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i>
+									Settings</a></li>
+							<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i>
+									Logout</a></li>
 						</ul>
-						
+
 					</div>
 				</div>
 				<!-- Navigation / End -->
@@ -68,8 +78,8 @@
 	<!-- Dashboard Content
 	================================================== -->
 	<div class="dashboard-content-container" data-simplebar>
-		<div class="dashboard-content-inner" >
-			
+		<div class="dashboard-content-inner">
+
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
 				<h3>Post a Job</h3>
@@ -83,129 +93,238 @@
 					</ul>
 				</nav>
 			</div>
-	
+
 			<!-- Row -->
 			<div class="row">
+				<form method="POST" id="new_job_post">
+					<!-- Dashboard Box -->
+					<div class="col-xl-12">
+						<div class="dashboard-box margin-top-0">
 
-				<!-- Dashboard Box -->
-				<div class="col-xl-12">
-					<div class="dashboard-box margin-top-0">
+							<!-- Headline -->
+							<div class="headline">
+								<h3><i class="icon-feather-folder-plus"></i> Job Submission Form</h3>
+							</div>
 
-						<!-- Headline -->
-						<div class="headline">
-							<h3><i class="icon-feather-folder-plus"></i> Job Submission Form</h3>
-						</div>
+							<div class="content with-padding padding-bottom-10">
+								<div class="row">
 
-						<div class="content with-padding padding-bottom-10">
-							<div class="row">
-
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Job Title</h5>
-										<input type="text" class="with-border">
-									</div>
-								</div>
-
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Job Type</h5>
-										<select class="selectpicker with-border" data-size="7" title="Select Job Type">
-											<option>Full Time</option>
-											<option>Freelance</option>
-											<option>Part Time</option>
-											<option>Internship</option>
-											<option>Temporary</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Job Category</h5>
-										<select class="selectpicker with-border" data-size="7" title="Select Category">
-											<option>Accounting and Finance</option>
-											<option>Clerical & Data Entry</option>
-											<option>Counseling</option>
-											<option>Court Administration</option>
-											<option>Human Resources</option>
-											<option>Investigative</option>
-											<option>IT and Computers</option>
-											<option>Law Enforcement</option>
-											<option>Management</option>
-											<option>Miscellaneous</option>
-											<option>Public Relations</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Location</h5>
-										<div class="input-with-icon">
-											<div id="autocomplete-container">
-												<input id="autocomplete-input" class="with-border" type="text" placeholder="Type Address">
-											</div>
-											<i class="icon-material-outline-location-on"></i>
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Company Name</h5>
+											<input type="text" class="with-border" name="company_name" disabled value="{{ company_info.company_name }}" id="company_name">
+											<input type="hidden" name="company_id" value="{{ company_info.id }}" id="company_id">
 										</div>
 									</div>
-								</div>
 
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Salary</h5>
-										<div class="row">
-											<div class="col-xl-6">
-												<div class="input-with-icon">
-													<input class="with-border" type="text" placeholder="Min">
-													<i class="currency">USD</i>
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Job Title</h5>
+											<input type="text" class="with-border" name="name" id="name">
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Job Type</h5>
+											<select class="selectpicker with-border" data-size="7"
+												title="Select Job Type" name="job_type" id="job_type">
+												<option value="OFF_LINE">Off-line</option>
+												<option value="REMOTE">Remote</option>
+												<option value="PROJECT">Project</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Designation</h5>
+											<input type="text" class="with-border" name="designation" id="designation">
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Location</h5>
+											<div class="input-with-icon">
+												<div id="autocomplete-container">
+													<input class="with-border" type="text" placeholder="Type Address" name="place" id="place">
+												</div>
+												<i class="icon-material-outline-location-on"></i>
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Job Category</h5>
+											<select class="selectpicker with-border" data-size="7"
+												title="Select Job Category" name="job_category" id="job_category">
+												<option value="Accounting_and_Finance">Accounting and Finance</option>
+												<option value="Clerical_and_Data_Entry">Clerical & Data Entry</option>
+												<option value="Counseling">Counseling</option>
+												<option value="Court_Administration">Court Administration</option>
+												<option value="Human_Resources">Human Resources</option>
+												<option value="Investigative">Investigative</option>
+												<option value="Web_Development">Web Development</option>
+												<option value="Mobile_Development">Mobile Development</option>
+												<option value="Bug_Fixes">Bug Fixes</option>
+												<option value="Data_Entry">Data Entry</option>
+												<option value="Web_Design">Web Design</option>
+												<option value="Writing">Writing</option>
+												<option value="Bug_Bounty">Bug Bounty</option>
+												<option value="DB_programming">Database programming</option>
+												<option value="Law_Enforcement">Law Enforcement</option>
+												<option value="Management">Management</option>
+												<option value="Miscellaneous">Miscellaneous</option>
+												<option value="Public Relations">Public Relations</option>
+												<option value="Sales">Sales</option>
+												<option value="Security">Security</option>
+												<option value="Social_Media">Social Media</option>
+												<option value="Software_Development">Software Development</option>
+												<option value="Systems_Administration">Systems Administration</option>
+												<option value="Translation">Translation</option>
+												<option value="Web_Analytics">Web Analytics</option>
+												<option value="Other">Other</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Age</h5>
+											<div class="row">
+												<div class="col-xl-6">
+													<div class="input-with-icon">
+														<input class="with-border" type="text" placeholder="Min" name="minimum_age" id="minimum_age">
+														<i class="currency">Year</i>
+													</div>
+												</div>
+												<div class="col-xl-6">
+													<div class="input-with-icon">
+														<input class="with-border" type="text" placeholder="Max" name="maximum_age" id="maximum_age">
+														<i class="currency">Year</i>
+													</div>
 												</div>
 											</div>
-											<div class="col-xl-6">
-												<div class="input-with-icon">
-													<input class="with-border" type="text" placeholder="Max">
-													<i class="currency">USD</i>
+										</div>
+									</div>
+
+									<div class="col-xl-3">
+										<div class="submit-field">
+											<h5>Salary</h5>
+											<div class="input-with-icon">
+												<div id="autocomplete-container">
+													<input class="with-border" type="text" placeholder="Approx." name="salary" id="salary">
+												</div>
+												<i class="currency">BDT</i>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xl-2">
+										<div class="submit-field">
+											<h5>Vacancy</h5>
+											<div class="input-with-icon">
+												<div id="autocomplete-container">
+													<input class="with-border" type="text" placeholder="Vacancy" name="vacancy" id="vacancy">
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="col-xl-4">
-									<div class="submit-field">
-										<h5>Tags <span>(optional)</span>  <i class="help-icon" data-tippy-placement="right" title="Maximum of 10 tags"></i></h5>
-										<div class="keywords-container">
-											<div class="keyword-input-container">
-												<input type="text" class="keyword-input with-border" placeholder="e.g. job title, responsibilites"/>
-												<button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
+									<div class="col-xl-3">
+										<div class="submit-field">
+											<h5>Experience</h5>
+											<div class="input-with-icon">
+												<div id="autocomplete-container">
+													<input class="with-border" type="text" placeholder="Experience" name="experience" id="experience">
+												</div>
+												<i class="currency">Year('s)</i>
 											</div>
-											<div class="keywords-list"><!-- keywords go here --></div>
-											<div class="clearfix"></div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="col-xl-12">
-									<div class="submit-field">
-										<h5>Job Description</h5>
-										<textarea cols="30" rows="5" class="with-border"></textarea>
-										<div class="uploadButton margin-top-30">
-											<input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="upload" multiple/>
-											<label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
-											<span class="uploadButton-file-name">Images or documents that might be helpful in describing your job</span>
 										</div>
 									</div>
-								</div>
 
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Skills<i class="help-icon"
+													data-tippy-placement="right" title="Maximum of 10 tags"></i></h5>
+											<div class="keywords-container">
+												<div class="keyword-input-container">
+													<input type="text" class="keyword-input with-border"
+														placeholder="e.g. job title, responsibilites" name="skills" id="skills">
+												</div>
+												<div class="keywords-list">
+													<!-- keywords go here -->
+												</div>
+												<div class="clearfix"></div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="col-xl-12">
+										<div class="submit-field">
+											<h5>Job Description</h5>
+											<textarea cols="30" rows="5" class="with-border" name="job_description" id="job_description"></textarea>
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Minimum Educational Qualification</h5>
+											<input type="text" class="with-border" name="educational_qualification" id="educational_qualification">
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Contact Phone</h5>
+											<input type="text" class="with-border" name="contact_number" id="contact_number">
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<h5>Contact Email</h5>
+											<input type="email" class="with-border" name="contact_email" id="contact_email">
+										</div>
+									</div>
+
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<div class="uploadButton margin-top-30">
+												<input class="uploadButton-input file1" type="file"
+													accept="image/*, application/pdf" id="upload" multiple />
+												<label class="uploadButton-button ripple-effect" for="upload">Upload
+													File 1</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-xl-8">
+										<div class="submit-field">
+											<div class="uploadButton margin-top-30">
+												<input class="uploadButton-input file2" type="file"
+													accept="image/*, application/pdf" id="upload" multiple />
+												<label class="uploadButton-button ripple-effect" for="upload">Upload
+													File 2</label>
+											</div>
+										</div>
+									</div>
+
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-xl-12">
-					<a href="#" class="button ripple-effect big margin-top-30"><i class="icon-feather-plus"></i> Post a Job</a>
-				</div>
-
+					<div class="col-xl-12">
+						<button class="button ripple-effect big margin-top-30" type="submit">
+							<i class="icon-feather-plus"></i>
+							Post a Job
+						</button>
+					</div>
+				</form>
 			</div>
 			<!-- Row / End -->
 
@@ -363,5 +482,81 @@
 <!-- Geting an API Key: https://developers.google.com/maps/documentation/javascript/get-api-key -->
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaoOT9ioUE4SA8h-anaFyU4K63a7H-7bc&amp;libraries=places"></script>
+<script>
+        $(document).on('submit', '#new_job_post', function (e) {
+            e.preventDefault();
+            formArray = $(this).serializeArray();
+            var element = '';
+			var csrf_token = $('meta[name="csrf-token"]').attr('content');
+			var company_name = $('#company_name').val();
+			var company_id = $('#company_id').val();
+			var name = $('#name').val();
+			var job_type = $('#job_type').val();
+			var job_category = $('#job_category').val();
+			var designation = $('#designation').val();
+			var place = $('#place').val();
+			var minimum_age = $('#minimum_age').val();
+			var maximum_age = $('#maximum_age').val();
+			var skills = $('#skills').val();
+			var salary = $('#salary').val();
+			var experience = $('#experience').val();
+			var vacancy = $('#vacancy').val();
+			var job_description = $('#job_description').val();
+			var educational_qualification = $('#educational_qualification').val();
+			var contact_number = $('#contact_number').val();
+			var contact_email = $('#contact_email').val();
+			var image1 = $('.file1').val();
+			var image2 = $('.file2').val();
+
+            var data = {
+				company_name: company_id,
+				name: name,
+				job_type: job_type,
+				job_category: job_category,
+				designation: designation,
+				place: place,
+				minimum_age: minimum_age,
+				maximum_age: maximum_age,
+				skills: skills,
+				salary: salary,
+				experience: experience,
+				vacancy: vacancy,
+				job_description: job_description,
+				educational_qualification: educational_qualification,
+				contact_number: contact_number,
+				contact_email: contact_email,
+				image1: image1,
+				image2: image2,
+			};
+            // console.log(formArray);
+            //print data to console
+            console.log('data: ', data);
+            $.ajax({
+                url: '{% url "CreateJobAPI" %}',
+                type: 'POST',
+                data: data,
+				username: 'admin',
+				password: 'asdf',
+				headers: {
+					"X-CSRFToken": '{{ csrf_token }}'
+				},
+                success: function (data) {
+                    console.log('success: ', data);
+                    window.location.href = "{% url 'FeatureJobOfflineGridView' %}";
+                },
+                error: function (data) {
+                    console.log('error: ', data);
+                    var errors = data.responseJSON;
+                    console.log('errors: ', errors);
+                    $.each(errors, function (key, value) {
+                        element = '#' + key + '-register';
+                        console.log('element: ', element);
+                        $(element).addClass('is-invalid');
+                        $(element).after('<div class="invalid-feedback">' + value + '</div>');
+                    });
+                }
+            });
+        })
+    </script>
 
 {% endblock content %}

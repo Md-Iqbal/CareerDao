@@ -12,3 +12,11 @@ class PostedJobSerializer(serializers.ModelSerializer):
         model = PostedJob
         fields = '__all__'
         read_only_fields = ('id', 'created_at', 'updated_at',)
+
+
+#### take cv & other details from user for apply job
+class AppliedJobSerializer(WritableNestedModelSerializer):
+    class Meta:
+        model = AppliedJob
+        fields = '__all__'
+        read_only_fields = ('id', 'created_at', 'updated_at',)

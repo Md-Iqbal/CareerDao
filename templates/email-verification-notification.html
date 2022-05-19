@@ -21,6 +21,22 @@
 ================================================== -->
 <!-- Container -->
 <div class="container">
+	<div class="notification error closeable">
+		<p>
+			<strong>Error!</strong>
+			<br>
+			<span>
+				{% if user.is_verified %}
+					Your account is already verified.
+				{% else %}
+					{% for error in field.errors %}
+						{{ error }}
+					{% endfor %}
+				{% endif %}
+			</span>
+		</p>
+		<a class="close" href="#"></a>
+	</div>
 
 	<div class="row">
 		<div class="col-xl-12">

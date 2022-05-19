@@ -19,27 +19,27 @@
     <link ref="stylesheet" type="text/css" href="{% static '' %}css/snackbar.min.css">
     <script src="{% static '' %}js/jquery-3.4.1.min.js"></script>
     <script src="{% static '' %}js/jquery-migrate-3.1.0.min.html"></script>
+    <script type="text/javascript" language="JavaScript">
+        function messagepopup(params){
+            Snackbar.show({
+                text: params,
+                pos: 'bottom-center',
+                showAction: false,
+                actionText: "Dismiss",
+                duration: 3000,
+                textColor: '#fff',
+                backgroundColor: '#383838'
+            });
+            }
+    </script>
 </head>
 
 <body>
     {% if messages %}
     {% for message in messages %}
-    {% if message.tags == 'error' %}
-    <div class="status-switch" id="snackbar-user-status">
-        <strong>Danger!</strong>
-        {{ message }}
-    </div>
-    {% elif message.tags == 'success' %}
-    <div class="alert alert-success">
-        <strong>Success!</strong>
-        {{ message }}
-    </div>
-    {% elif message.tags == 'warning' %}
-    <div class="alert alert-warning">
-        <strong>Warning!</strong>
-        {{ message }}
-    </div>
-    {% endif %}
+    <script type="text/javascript" language="JavaScript">
+        messagepopup(message);
+    </script>
     {% endfor %}
     {% endif %}
     <!-- Wrapper -->
@@ -65,12 +65,7 @@
                         <nav id="navigation">
                             <ul id="responsive">
 
-                                <li><a href="#" class="current">Home</a>
-                                    <ul class="dropdown-nav">
-                                        <li><a href="{% url 'HomeView' %}">Home 1</a></li>
-                                        <li><a href="index-2.html">Home 2</a></li>
-                                        <li><a href="index-3.html">Home 3</a></li>
-                                    </ul>
+                                <li><a href="{% url 'HomeView' %}" class="current">Home</a>
                                 </li>
 
                                 <li><a href="#">Find Work</a>
@@ -79,12 +74,12 @@
                                             <ul class="dropdown-nav">
                                                 <li><a href="{% url 'FeatureJobOfflineGridView' %}">Full Page List +
                                                         Map</a></li>
-                                                <li><a href="jobs-grid-layout-full-page-map.html">Full Page Grid +
+                                                <!-- <li><a href="jobs-grid-layout-full-page-map.html">Full Page Grid +
                                                         Map</a></li>
                                                 <li><a href="jobs-grid-layout-full-page.html">Full Page Grid</a></li>
                                                 <li><a href="jobs-list-layout-1.html">List Layout 1</a></li>
                                                 <li><a href="jobs-list-layout-2.html">List Layout 2</a></li>
-                                                <li><a href="jobs-grid-layout.html">Grid Layout</a></li>
+                                                <li><a href="jobs-grid-layout.html">Grid Layout</a></li> -->
                                             </ul>
                                         </li>
                                         <li><a href="#">Browse Tasks</a>
@@ -183,214 +178,357 @@
                     </div>
                     <!-- Left Side Content / End -->
 
-
-                    <!-- Right Side Content / End -->
-                    
-                    <!-- <div class="right-side">
-                        <nav id="navigation">
-                            <ul id="responsive">
-                                <li><a href="#">Account</a>
-                                    <ul class="dropdown-nav">
-                                        <li><a href="{% url 'HomeView' %}">Dashboard</a></li>
-                                        <li><a href="index-2.html">Edit Details</a></li>
-                                        <li><a href="/api/v1/auth/logout/">Logout</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div> -->
-                    
                     <div class="right-side">
-                    
+                        {% if request.user.id is None %}
                         <div class="header-widget">
-                            <a href="#sign-in-dialog" class="popup-with-zoom-anim log-in-button"><i class="icon-feather-log-in"></i>
+                            <a href="#sign-in-dialog" class="popup-with-zoom-anim log-in-button"><i
+                                    class="icon-feather-log-in"></i>
                                 <span>Log In / Register</span></a>
                         </div>
-                    
-                        <!-- Mobile Navigation Button -->
-                        <span class="mmenu-trigger">
-                            <button class="hamburger hamburger--collapse" type="button">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
-                            </button>
-                        </span>
-                    
-                    </div>
-                    <!-- Right Side Content / End -->
+                        {% else %}
+                        <!--  User Notifications -->
+                        <div class="header-widget hide-on-mobile">
 
-                </div>
-            </div>
-            <!-- Header / End -->
+                            <!-- Notifications -->
+                            <div class="header-notifications">
 
-        </header>
-        <div class="clearfix"></div>
-        <!-- Header Container / End -->
-        {% block content %}
-
-        {% endblock content %}
-        <!-- Footer
-        ================================================== -->
-        <div id="footer">
-
-            <!-- Footer Top Section -->
-            <div class="footer-top-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-
-                            <!-- Footer Rows Container -->
-                            <div class="footer-rows-container">
-
-                                <!-- Left Side -->
-                                <div class="footer-rows-left">
-                                    <div class="footer-row">
-                                        <div class="footer-row-inner footer-logo">
-                                            <img src="{% static '' %}images/logo2.png" alt="">
-                                        </div>
-                                    </div>
+                                <!-- Trigger -->
+                                <div class="header-notifications-trigger">
+                                    <a href="#"><i class="icon-feather-bell"></i><span>4</span></a>
                                 </div>
 
-                                <!-- Right Side -->
-                                <div class="footer-rows-right">
+                                <!-- Dropdown -->
+                                <div class="header-notifications-dropdown">
 
-                                    <!-- Social Icons -->
-                                    <div class="footer-row">
-                                        <div class="footer-row-inner">
-                                            <ul class="footer-social-links">
-                                                <li>
-                                                    <a href="#" title="Facebook" data-tippy-placement="bottom"
-                                                        data-tippy-theme="light">
-                                                        <i class="icon-brand-facebook-f"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" title="Twitter" data-tippy-placement="bottom"
-                                                        data-tippy-theme="light">
-                                                        <i class="icon-brand-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" title="Google Plus" data-tippy-placement="bottom"
-                                                        data-tippy-theme="light">
-                                                        <i class="icon-brand-google-plus-g"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" title="LinkedIn" data-tippy-placement="bottom"
-                                                        data-tippy-theme="light">
-                                                        <i class="icon-brand-linkedin-in"></i>
+                                    <div class="header-notifications-headline">
+                                        <h4>Notifications</h4>
+                                        <button class="mark-as-read ripple-effect-dark" title="Mark all as read"
+                                            data-tippy-placement="left">
+                                            <i class="icon-feather-check-square"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="header-notifications-content">
+                                        <div class="header-notifications-scroll" data-simplebar>
+                                            <ul>
+                                                <!-- Notification -->
+                                                <li class="notifications-not-read">
+                                                    <a href="dashboard-manage-candidates.html">
+                                                        <span class="notification-icon"><i
+                                                                class="icon-material-outline-group"></i></span>
+                                                        <span class="notification-text">
+                                                            <strong>Michael Shannah</strong> applied for a job <span
+                                                                class="color">Full
+                                                                Stack Software Engineer</span>
+                                                        </span>
                                                     </a>
                                                 </li>
                                             </ul>
-                                            <div class="clearfix"></div>
                                         </div>
                                     </div>
 
-                                    <!-- Language Switcher -->
-                                    <div class="footer-row">
-                                        <div class="footer-row-inner">
-                                            <select class="selectpicker language-switcher"
-                                                data-selected-text-format="count" data-size="5">
-                                                <option selected>English</option>
-                                                <option>Français</option>
-                                                <option>Español</option>
-                                                <option>Deutsch</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
 
                             </div>
-                            <!-- Footer Rows Container / End -->
+
+                            <!-- Messages -->
+                            <div class="header-notifications">
+                                <div class="header-notifications-trigger">
+                                    <a href="#"><i class="icon-feather-mail"></i><span>3</span></a>
+                                </div>
+
+                                <!-- Dropdown -->
+                                <div class="header-notifications-dropdown">
+
+                                    <div class="header-notifications-headline">
+                                        <h4>Messages</h4>
+                                        <button class="mark-as-read ripple-effect-dark" title="Mark all as read"
+                                            data-tippy-placement="left">
+                                            <i class="icon-feather-check-square"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="header-notifications-content">
+                                        <div class="header-notifications-scroll" data-simplebar>
+                                            <ul>
+                                                <!-- Notification -->
+                                                <li class="notifications-not-read">
+                                                    <a href="dashboard-messages.html">
+                                                        <span class="notification-avatar status-online"><img
+                                                                src="images/user-avatar-placeholder.png" alt=""></span>
+                                                        <div class="notification-text">
+                                                            <strong>Marcin Kowalski</strong>
+                                                            <p class="notification-msg-text">I received payment. Thanks
+                                                                for cooperation!</p>
+                                                            <span class="color">Yesterday</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <a href="dashboard-messages.html"
+                                        class="header-notifications-button ripple-effect button-sliding-icon">View All
+                                        Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
+                                </div>
+                            </div>
+
                         </div>
+                        <!--  User Notifications / End -->
+
+                        <!-- User Menu -->
+                        <div class="header-widget">
+
+                            <!-- Messages -->
+                            <div class="header-notifications user-menu">
+                                <div class="header-notifications-trigger">
+                                    <a href="#">
+                                        <div class="user-avatar status-online"><img
+                                                src="{% static '' %}images/user-avatar-small-01.jpg" alt=""></div>
+                                    </a>
+                                </div>
+
+                                <!-- Dropdown -->
+                                <div class="header-notifications-dropdown">
+
+                                    <!-- User Status -->
+                                    <div class="user-status">
+
+                                        <!-- User Name / Avatar -->
+                                        <div class="user-details">
+                                            <div class="user-avatar status-online"><img
+                                                    src="{% static '' %}images/user-avatar-small-01.jpg" alt=""></div>
+                                            <div class="user-name">
+                                                {{ request.user.username }}
+                                                <span>
+                                                    {% if request.user.is_freelancer %}
+                                                    Freelancer
+                                                    {% elif request.user.is_project_manager %}
+                                                    Project Manager
+                                                    {% elif request.user.is_company %}
+                                                    Company
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- User Status Switcher -->
+                                        <div class="status-switch" id="snackbar-user-status">
+                                            <label class="user-online current-status">Online</label>
+                                            <label class="user-invisible">Invisible</label>
+                                            <!-- Status Indicator -->
+                                            <span class="status-indicator" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <ul class="user-menu-small-nav">
+                                        <li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i>
+                                                Dashboard</a></li>
+                                        <li><a href="dashboard-settings.html"><i
+                                                    class="icon-material-outline-settings"></i> Settings</a>
+                                        </li>
+                                        <li><a href="{% url 'logout' %}"><i
+                                                    class="icon-material-outline-power-settings-new"></i>
+                                                Logout</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- User Menu / End -->
+                    {% endif %}
+                    <!-- Mobile Navigation Button -->
+                    <span class="mmenu-trigger">
+                        <button class="hamburger hamburger--collapse" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </span>
+
+                </div>
+                <!-- Right Side Content / End -->
+
+            </div>
+    </div>
+    <!-- Header / End -->
+
+    </header>
+    <div class="clearfix"></div>
+    <!-- Header Container / End -->
+    <!-- <div class="notification error closeable">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+            <a class="close" href="#"></a>
+        </div> -->
+    {% block content %}
+
+    {% endblock content %}
+    <!-- Footer
+        ================================================== -->
+    <div id="footer">
+
+        <!-- Footer Top Section -->
+        <div class="footer-top-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+
+                        <!-- Footer Rows Container -->
+                        <div class="footer-rows-container">
+
+                            <!-- Left Side -->
+                            <div class="footer-rows-left">
+                                <div class="footer-row">
+                                    <div class="footer-row-inner footer-logo">
+                                        <img src="{% static '' %}images/logo2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side -->
+                            <div class="footer-rows-right">
+
+                                <!-- Social Icons -->
+                                <div class="footer-row">
+                                    <div class="footer-row-inner">
+                                        <ul class="footer-social-links">
+                                            <li>
+                                                <a href="#" title="Facebook" data-tippy-placement="bottom"
+                                                    data-tippy-theme="light">
+                                                    <i class="icon-brand-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" title="Twitter" data-tippy-placement="bottom"
+                                                    data-tippy-theme="light">
+                                                    <i class="icon-brand-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" title="Google Plus" data-tippy-placement="bottom"
+                                                    data-tippy-theme="light">
+                                                    <i class="icon-brand-google-plus-g"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" title="LinkedIn" data-tippy-placement="bottom"
+                                                    data-tippy-theme="light">
+                                                    <i class="icon-brand-linkedin-in"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Language Switcher -->
+                                <div class="footer-row">
+                                    <div class="footer-row-inner">
+                                        <select class="selectpicker language-switcher" data-selected-text-format="count"
+                                            data-size="5">
+                                            <option selected>English</option>
+                                            <option>Français</option>
+                                            <option>Español</option>
+                                            <option>Deutsch</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Footer Rows Container / End -->
                     </div>
                 </div>
             </div>
-            <!-- Footer Top Section / End -->
-
-            <!-- Footer Middle Section -->
-            <div class="footer-middle-section">
-                <div class="container">
-                    <div class="row">
-
-                        <!-- Links -->
-                        <div class="col-xl-2 col-lg-2 col-md-3">
-                            <div class="footer-links">
-                                <h3>For Candidates</h3>
-                                <ul>
-                                    <li><a href="#"><span>Browse Jobs</span></a></li>
-                                    <li><a href="#"><span>Add Resume</span></a></li>
-                                    <li><a href="#"><span>Job Alerts</span></a></li>
-                                    <li><a href="#"><span>My Bookmarks</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Links -->
-                        <div class="col-xl-2 col-lg-2 col-md-3">
-                            <div class="footer-links">
-                                <h3>For Employers</h3>
-                                <ul>
-                                    <li><a href="#"><span>Browse Candidates</span></a></li>
-                                    <li><a href="#"><span>Post a Job</span></a></li>
-                                    <li><a href="#"><span>Post a Task</span></a></li>
-                                    <li><a href="#"><span>Plans & Pricing</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Links -->
-                        <div class="col-xl-2 col-lg-2 col-md-3">
-                            <div class="footer-links">
-                                <h3>Helpful Links</h3>
-                                <ul>
-                                    <li><a href="#"><span>Contact</span></a></li>
-                                    <li><a href="#"><span>Privacy Policy</span></a></li>
-                                    <li><a href="#"><span>Terms of Use</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Links -->
-                        <div class="col-xl-2 col-lg-2 col-md-3">
-                            <div class="footer-links">
-                                <h3>Account</h3>
-                                <ul>
-                                    <li><a href="#"><span>Log In</span></a></li>
-                                    <li><a href="#"><span>My Account</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Newsletter -->
-                        <div class="col-xl-4 col-lg-4 col-md-12">
-                            <h3><i class="icon-feather-mail"></i> Sign Up For a Newsletter</h3>
-                            <p>Weekly breaking news, analysis and cutting edge advices on job searching.</p>
-                            <form action="#" method="get" class="newsletter">
-                                <input type="text" name="fname" placeholder="Enter your email address">
-                                <button type="submit"><i class="icon-feather-arrow-right"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Middle Section / End -->
-
-            <!-- Footer Copyrights -->
-            <div class="footer-bottom-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            © 2019 <strong>Hireo</strong>. All Rights Reserved.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Copyrights / End -->
-
         </div>
-        <!-- Footer / End -->
+        <!-- Footer Top Section / End -->
+
+        <!-- Footer Middle Section -->
+        <div class="footer-middle-section">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                        <div class="footer-links">
+                            <h3>For Candidates</h3>
+                            <ul>
+                                <li><a href="#"><span>Browse Jobs</span></a></li>
+                                <li><a href="#"><span>Add Resume</span></a></li>
+                                <li><a href="#"><span>Job Alerts</span></a></li>
+                                <li><a href="#"><span>My Bookmarks</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                        <div class="footer-links">
+                            <h3>For Employers</h3>
+                            <ul>
+                                <li><a href="#"><span>Browse Candidates</span></a></li>
+                                <li><a href="#"><span>Post a Job</span></a></li>
+                                <li><a href="#"><span>Post a Task</span></a></li>
+                                <li><a href="#"><span>Plans & Pricing</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                        <div class="footer-links">
+                            <h3>Helpful Links</h3>
+                            <ul>
+                                <li><a href="#"><span>Contact</span></a></li>
+                                <li><a href="#"><span>Privacy Policy</span></a></li>
+                                <li><a href="#"><span>Terms of Use</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="col-xl-2 col-lg-2 col-md-3">
+                        <div class="footer-links">
+                            <h3>Account</h3>
+                            <ul>
+                                <li><a href="#"><span>Log In</span></a></li>
+                                <li><a href="#"><span>My Account</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="col-xl-4 col-lg-4 col-md-12">
+                        <h3><i class="icon-feather-mail"></i> Sign Up For a Newsletter</h3>
+                        <p>Weekly breaking news, analysis and cutting edge advices on job searching.</p>
+                        <form action="#" method="get" class="newsletter">
+                            <input type="text" name="fname" placeholder="Enter your email address">
+                            <button type="submit"><i class="icon-feather-arrow-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Middle Section / End -->
+
+        <!-- Footer Copyrights -->
+        <div class="footer-bottom-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        © 2019 <strong>Hireo</strong>. All Rights Reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Copyrights / End -->
+
+    </div>
+    <!-- Footer / End -->
 
     </div>
     <!-- Wrapper / End -->
@@ -414,18 +552,19 @@
                     <!-- Welcome Text -->
                     <div class="welcome-text">
                         <h3>We're glad to see you again!</h3>
-                        <span>Don't have an account? <a href="#" class="register-tab">Sign Up!</a></span>
+                        <span>Don't have an account? <a href="{% url 'sign-up' %}" class="register-tab">Sign
+                                Up!</a></span>
                     </div>
 
                     <!-- Form -->
-                    <form method="post" id="login-form">
+                    <form method="post" id="login-form" action="{% url 'sign-in' %}">
                         {% csrf_token %}
-                        
+
                         <input type="hidden" name="next" value="{{ request.path }}">
                         <div class="input-with-icon-left">
-                            <i class="icon-material-baseline-mail-outline"></i>
-                            <input type="text" class="input-text with-border" name="emailaddress" id="emailaddress"
-                                placeholder="Email Address" required />
+                            <i class="icon-material-outline-account-circle"></i>
+                            <input type="text" class="input-text with-border" name="username" id="username"
+                                placeholder="Username" required />
                         </div>
 
                         <div class="input-with-icon-left">
@@ -458,32 +597,16 @@
                     </div>
 
                     <!-- Form -->
-                    <form method="POST" id="register-account-form">
+                    <form method="POST" id="register-account-form" action="{% url 'sign-up' %}">
                         {% csrf_token %}
                         <input type="hidden" name="next" id="url_locator" value="{{ request.path }}">
                         <!-- Account Type -->
                         <div class="account-type">
-                            <div>
-                                <input type="radio" name="account-type-radio" id="freelancer-radio"
-                                    class="account-type-radio" checked />
-                                <label for="freelancer-radio" class="ripple-effect-dark"><i
-                                        class="icon-material-outline-account-circle"></i>
-                                    Freelancer</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="account-type-radio" id="project-manager-radio"
-                                    class="account-type-radio" />
-                                <label for="project-manager-radio" class="ripple-effect-dark"><i
-                                        class="icon-material-outline-account-circle"></i>
-                                    Project Mngr</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="account-type-radio" id="company-radio"
-                                    class="account-type-radio" />
-                                <label for="company-radio" class="ripple-effect-dark"><i
-                                        class="icon-material-outline-business-center"></i>
-                                    Company</label>
-                            </div>
+                            <select class="selectpicker" name="account_type" required>
+                                <option value="freelancer">Freelancer</option>
+                                <option value="project_manager">Project Manager</option>
+                                <option value="company">Company</option>
+                            </select>
                         </div>
 
                         <div class="input-with-icon-left">
@@ -587,7 +710,7 @@
     <!-- Google API -->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaoOT9ioUE4SA8h-anaFyU4K63a7H-7bc&amp;libraries=places&amp;callback=initAutocomplete"></script>
-    <script>
+    <!-- <script>
         $(document).on('submit', '#register-account-form', function (e) {
             e.preventDefault();
             formArray = $(this).serializeArray();
@@ -600,23 +723,6 @@
             var username = $('#username-register').val();
             var password = $('#password-register').val();
             var password_repeat = $('#password-repeat-register').val();
-            // if (is_freelancer == true && is_project_manager == false && is_company == false){
-            //     is_freelancer = True;
-            //     is_project_manager = False;
-            //     is_company = False;
-            // } else if (is_freelancer == false && is_project_manager == true && is_company == false) {
-            //     is_freelancer = False;
-            //     is_project_manager = True;
-            //     is_company = False;
-            // } else if (is_freelancer == false && is_project_manager == false && is_company == true) {
-            //     is_freelancer = False;
-            //     is_project_manager = False;
-            //     is_company = True;
-            // } else {
-            //     is_freelancer = False;
-            //     is_project_manager = False;
-            //     is_company = False;
-            // }
             var data = {
                 'next': next,
                 'csrfmiddlewaretoken': formArray[0]['value'],
@@ -636,15 +742,23 @@
                 type: 'POST',
                 data: data,
                 success: function (data) {
-                    console.log(data);
-                    window.location.href = '{% url "EmailVerificationNotificationView" %}'
+                    console.log('success: ', data);
+                    window.location.href = "{% url 'HomeView' %}";
                 },
                 error: function (data) {
-                    console.log(data);
+                    console.log('error: ', data);
+                    var errors = data.responseJSON;
+                    console.log('errors: ', errors);
+                    $.each(errors, function (key, value) {
+                        element = '#' + key + '-register';
+                        console.log('element: ', element);
+                        $(element).addClass('is-invalid');
+                        $(element).after('<div class="invalid-feedback">' + value + '</div>');
+                    });
                 }
             });
         })
-    </script>
+    </script> -->
 </body>
 
 <!-- Mirrored from www.vasterad.com/themes/hireo/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Nov 2021 11:27:17 GMT -->

@@ -1,12 +1,24 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from appJobAPI.models import PostedJob
+
+from app_authApi.models import User
+from app_authApi.permissions import AllowAny
+from app_homeApi.models import *
+from appJobAPI.forms import JobPostForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 
 # @login_required
 def HomeView(request):
+    ### get data after email verification
+    user = request.user
+    if User.objects.filter(id=user.id).exists():
+        user = User.objects.get(id=user.id)
+        return render(request, 'index.html', {'user': user})
     return render(request, 'index.html')
-
 
 # def RegisterView(request):
 #     return render(request, 'register.html')
@@ -33,7 +45,21 @@ def ProjectMilestoneView(request):
 
 
 def FeatureJobOfflineGridView(request):
-    return render(request, 'jobs-grid-layout-full-page.html')
+    jobs = PostedJob.objects.filter(is_active=True)
+    #paginator
+    page = request.GET.get("page")
+    paginator = Paginator(jobs, 12)
+    try:
+        jobs = paginator.page(page)
+    except PageNotAnInteger:
+        jobs = paginator.page(1)
+    except EmptyPage:
+        jobs = paginator.page(paginator.num_pages)
+    context = {
+        'jobs': jobs,
+        'page': page,
+    }
+    return render(request, 'jobs-grid-layout-full-page.html', context)
 
 
 def FeatureJobOfflineListView(request):
@@ -42,6 +68,25 @@ def FeatureJobOfflineListView(request):
 
 def FeatureJobOnlineListView(request):
     return render(request, 'feature-job-online.html')
+
+
+def JobDetailView(request, id):
+    print(id)
+    try:
+        job = PostedJob.objects.get(id=id)
+        company = Company.objects.get(id = job.company_name.id)
+        #similar type jobs without current job
+        similar_jobs = PostedJob.objects.filter(job_type=job.job_type).exclude(id=job.id)
+        print(company)
+        context = {
+            'job': job,
+            'company': company,
+            'similar_jobs': similar_jobs,
+        }
+        print(context)
+        return render(request, 'single-job-page.html', context)
+    except:
+        return render(request, 'pages-404.html')
 
 
 def FeatureJobOnline_with_SidebarView(request):
@@ -57,7 +102,11 @@ def PostJobOfflineView(request):
 
 
 def PostJobOnlineView(request):
-    return render(request, 'dashboard-post-a-job.html')
+    if request.user.is_company:
+        company_info = Company.objects.get(user=request.user)
+        return render(request, 'dashboard-post-a-job.html', {'company_info': company_info})
+    else:
+        return render(request, 'pages-404.html')
 
 
 def FreelancerGridView(request):

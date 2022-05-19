@@ -1,137 +1,167 @@
-from re import search
 from urllib import response
-from django.shortcuts import render
-from django.urls import reverse
-from urllib3 import Retry
-from rest_framework import exceptions
-from rest_framework import views,generics,status
-from rest_framework.response import Response
-from rest_framework.exceptions import AuthenticationFailed
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework import generics, status
-import jwt
-import datetime
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from requests import Response
 
-from app_authApi.utils import Util
-
-from .serializers import UserInfoSerializer
-from .models import User
-from app_authApi import serializers
-from django.contrib.sites.shortcuts import get_current_site
+from app_authApi.models import *
+from app_homeApi.models import *
 
 
+def login_required(request):
+    return HttpResponse("<script>$('#loginModal').modal('show')</script>")
 
-class RegisterView(generics.CreateAPIView):
-    permission_classes = (AllowAny,)
-    serializer_class = UserInfoSerializer
-    queryset = User.objects.all()
-    
-    def create(self, request, *args, **kwargs):
-        data = request.data
-        if data['password'] != data['password_repeat']:
-            raise exceptions.ValidationError('Passwords do not match')
-        if not search(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', data['email']):
-            raise exceptions.ValidationError('Email is not valid')
-        if not data['username'].isalnum():
-            raise exceptions.ValidationError('Username must be alphanumeric')
-        
-        serializer = self.get_serializer(data=data)
-        serializer.is_valid(raise_exception=True)
-        user = self.perform_create(serializer)
-        if user:
-            if data['is_freelancer'] == '"true"' and data['is_company'] == '"false"' and data['is_project_manager'] == '"false"':
-                user.is_freelancer = True
-                user.is_company = False
-                user.is_project_manager = False
-            elif data['is_freelancer'] == '"false"' and data['is_company'] == '"true"' and data['is_project_manager'] == '"false"':
-                user.is_freelancer = False
-                user.is_company = True
-                user.is_project_manager = False
-            elif data['is_freelancer'] == '"false"' and data['is_company'] == '"false"' and data['is_project_manager'] == '"true"':
-                user.is_freelancer = False
-                user.is_company = False
-                user.is_project_manager = True
-            user.username = data['username']
-            user.is_verified = False
-            user.set_password(data['password'])
-            user.save()
-            headers = self.get_success_headers(serializer.data)
-            print("Headers ----> ", headers)
-            refresh = RefreshToken.for_user(user)
-            current_site = get_current_site(self.request).domain
-            relative_path = reverse('VerifyEmailView')
-            absolute_path = "http://{}{}?token={}".format(
-                current_site, relative_path, refresh.access_token)
-            print(absolute_path)
-            email_body = "Hi " + user.username+"!!!\n\n, Welcome to CareerDao.\n\n"\
-            "Please click on the link below to verify your email address.\n\n"\
-            + absolute_path + "\n\n"\
-            "If you did not request this email, please ignore it.\n\n"\
-            "Thanks,\n\n"\
-            "CareerDao Team"
-            data = {
-                'email_to': user.email,
-                'email_subject': 'Verify your email',
-                'email_body': email_body
-            }
-            Util.send_email(data)
-            ### role
-            role = None
-            if user.is_freelancer:
-                role = 'freelancer'
-            elif user.is_project_manager:
-                role = 'project_manager'
-            elif user.is_company:
-                role = 'company'
-            response = Response()
-            response.data = {
-                'status': 'success',
-                'access_token': str(refresh.access_token),
-                'refresh_token': str(refresh),
-                'token_type': 'Bearer',
-                'user_id': user.id,
-                'username': user.username,
-                'role': role
-            }
-            response.status_code = status.HTTP_201_CREATED
-            response.headers = headers
-            return response
-        else:
-            raise exceptions.ValidationError('User already exists')
-    
-    def perform_create(self, serializer):
-        return serializer.save()
 
-    def get_success_headers(self, data):
-        try:
-            return {'Location': str(data['url'])}
-        except (TypeError, KeyError):
-            return {}
-    
-
-class VerifyEmailView(views.APIView):
-    permission_classes = (AllowAny,)
-    def get(self, request, *args, **kwargs):
-        try:
-            token = request.GET.get('token')
-            print("Token ----> ", token)
-            payload = jwt.decode(token, 'SECRET_KEY', algorithms=['HS256'])
-            user = User.objects.get(id=payload['user_id'])
-            if user:
-                user.is_email_verified = True
-                user.save()
-                serializer = UserInfoSerializer(user)
-                return Response({'access_token': str(token), 'user info': serializer.data}, status=status.HTTP_200_OK)
+def RegisterView(request):
+    if request.method == 'POST':
+        is_freelancer = is_project_manager = is_company = False
+        account_type = request.POST.get('account_type', 'none')
+        print("Account type --> ",account_type)
+        email = request.POST.get('emailaddress-register', '')
+        username = request.POST.get('username-register', '')
+        password = request.POST.get('password-register', '')
+        password_repeat = request.POST.get('password-repeat-register', '')
+        next = request.POST.get('next', '/')
+        print("Next is: " + next)
+        if password == password_repeat:
+            if User.objects.filter(username=username).exists():
+                messages.error(
+                    request, 'Account already exists with this phone: ' + str(username))
+                next = request.POST.get('next', '/')
+                return HttpResponseRedirect(next)
+            elif User.objects.filter(email=email).exists():
+                messages.error(
+                    request, 'Account already exists with this email: ' + str(email))
+                next = request.POST.get('next', '/')
+                return HttpResponseRedirect(next)
             else:
-                raise exceptions.ValidationError('User does not exist')
-        except jwt.ExpiredSignatureError:
-            raise exceptions.ValidationError('Token has expired')
-        except jwt.InvalidSignatureError:
-            raise exceptions.ValidationError('Token is invalid')
-        except jwt.DecodeError:
-            raise exceptions.ValidationError('Token is invalid')
-        except Exception as e:
-            raise exceptions.ValidationError(str(e))
-    
+                if account_type == 'freelancer':
+                    is_freelancer = True
+                    is_project_manager = False
+                    is_company = False
+                elif account_type == 'project_manager':
+                    is_freelancer = False
+                    is_project_manager = True
+                    is_company = False
+                elif account_type == 'company':
+                    is_freelancer = False
+                    is_project_manager = False
+                    is_company = True
+                print(is_freelancer)
+                print(is_project_manager)
+                print(is_company)
+                print(email)
+                print(username)
+                print(password)
+                try:
+                    user = User.objects.create(
+                        username=username,
+                        is_freelancer=is_freelancer,
+                        is_project_manager=is_project_manager,
+                        is_company=is_company,
+                        email=email
+                    )
+                    user.set_password(password)
+                    user.save()
+                    print('User created')
+                    if user is not None:
+                        if user.is_freelancer:
+                            if Freelancer.objects.filter(user=user).exists():
+                                print('Freelancer already exists')
+                            else:
+                                print('Freelancer not exists')
+                                Freelancer.objects.create(
+                                    user=user,
+                                    username = username,
+                                    email = email
+                                )
+                                print('Freelancer created')
+                        elif user.is_project_manager:
+                            if ProjectManager.objects.filter(user=user).exists():
+                                print('Project Manager already exists')
+                            else:
+                                print('Project Manager not exists')
+                                ProjectManager.objects.create(
+                                    user=user,
+                                    username = username,
+                                    email = email
+                                )
+                                print('Project Manager created')
+                        elif user.is_company:
+                            if Company.objects.filter(user=user).exists():
+                                print('Company already exists')
+                            else:
+                                print('Company not exists')
+                                Company.objects.create(
+                                    user=user,
+                                    username = username,
+                                    email = email
+                                )
+                                print('Company created')
+                        messages.success(request, 'Account created successfully!')
+                        print(user)
+                        login(request, user)
+                        messages.success(
+                            request, 'Sign up successful: ' + str(username))
+                        print('Yeah logged in!')
+                        next = request.POST.get('next', '/')
+                        return HttpResponseRedirect(next)
+                    else:
+                        print('user not authenticated')
+                        messages.error(request, 'Password is incorrect')
+                        next = request.POST.get('next', '/')
+                        return HttpResponseRedirect(next)
+                except Exception as e:
+                    print(e)
+                    messages.error(
+                        request, 'Failed to create account: ' + str(username))
+                    next = request.POST.get('next', '/')
+                    return HttpResponseRedirect(next)
+        else:
+            messages.error(request, 'Passwords do not match')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        return render(request, 'customer-signup.html')
+
+
+def LoginView(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        # print(User.objects.filter(username=username, password=password).values('username'))
+        print(username)
+        print(password)
+        try:
+            get_user = User.objects.get(username=username)
+            print(get_user)
+        except:
+            get_user = None
+            print(get_user)
+        if get_user is not None:
+            print('user found')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                print('user authenticated')
+                login(request, user)
+                messages.success(request, 'Login successful'+str(username))
+                print('Yeah logged in!')
+                next = request.POST.get('next', '/')
+                return HttpResponseRedirect(next)
+            else:
+                print('user not authenticated')
+                messages.error(request, 'Password is incorrect')
+                next = request.POST.get('next', '/')
+                return HttpResponseRedirect(next)
+        else:
+            messages.error(request, 'User not found!')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        return render(request, 'customer-login.html')
+
+
+def LogoutView(request):
+    logout(request)
+    return redirect('/')
