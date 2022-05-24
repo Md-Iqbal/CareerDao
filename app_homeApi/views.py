@@ -23,6 +23,8 @@ def HomeView(request):
 # def RegisterView(request):
 #     return render(request, 'register.html')
 
+def CompanyView(request):
+    return render(request, 'browse-companies.html')
 
 def LiveChatView(request):
     return render(request, 'dashboard-messages.html')
@@ -114,7 +116,10 @@ def FreelancerGridView(request):
 
 
 def FreelancerGrid_with_SidebarView(request):
-    return render(request, 'browse-freelancer-grid-with-sidebar.html')
+    return render(request, 'freelancers-grid-layout-full-page.html')
+
+def FreelancerProfileView(request):
+    return render(request, 'single-freelancer-profile.html')
 
 
 def FreelancerListView(request):

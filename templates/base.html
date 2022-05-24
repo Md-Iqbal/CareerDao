@@ -70,53 +70,48 @@
 
                                 <li><a href="#">Find Work</a>
                                     <ul class="dropdown-nav">
-                                        <li><a href="#">Browse Jobs</a>
-                                            <ul class="dropdown-nav">
-                                                <li><a href="{% url 'FeatureJobOfflineGridView' %}">Full Page List +
+                                        <li><a href="{% url 'FeatureJobOfflineGridView' %}">Browse Jobs</a>
+                                            <!-- <ul class="dropdown-nav">
+                                                <li><a href="">Full Page List +
                                                         Map</a></li>
-                                                <!-- <li><a href="jobs-grid-layout-full-page-map.html">Full Page Grid +
+                                                <li><a href="jobs-grid-layout-full-page-map.html">Full Page Grid +
                                                         Map</a></li>
                                                 <li><a href="jobs-grid-layout-full-page.html">Full Page Grid</a></li>
                                                 <li><a href="jobs-list-layout-1.html">List Layout 1</a></li>
                                                 <li><a href="jobs-list-layout-2.html">List Layout 2</a></li>
-                                                <li><a href="jobs-grid-layout.html">Grid Layout</a></li> -->
-                                            </ul>
+                                                <li><a href="jobs-grid-layout.html">Grid Layout</a></li>
+                                            </ul> -->
                                         </li>
-                                        <li><a href="#">Browse Tasks</a>
-                                            <ul class="dropdown-nav">
+                                        <li><a href="{% url 'FeatureJobOfflineGridView' %}">Browse Projects</a>
+                                            <!-- <ul class="dropdown-nav">
                                                 <li><a href="tasks-list-layout-1.html">List Layout 1</a></li>
                                                 <li><a href="tasks-list-layout-2.html">List Layout 2</a></li>
                                                 <li><a href="tasks-grid-layout.html">Grid Layout</a></li>
                                                 <li><a href="tasks-grid-layout-full-page.html">Full Page Grid</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li><a href="browse-companies.html">Browse Companies</a></li>
-                                        <li><a href="single-job-page.html">Job Page</a></li>
-                                        <li><a href="single-task-page.html">Task Page</a></li>
-                                        <li><a href="single-company-profile.html">Company Profile</a></li>
+                                        <li><a href="{% url 'CompanyView' %}">Browse Companies</a></li>
                                     </ul>
                                 </li>
 
                                 <li><a href="#">For Employers</a>
                                     <ul class="dropdown-nav">
-                                        <li><a href="#">Find a Freelancer</a>
-                                            <ul class="dropdown-nav">
+                                        <li><a href="{% url 'FreelancerGrid_with_SidebarView' %}">Find a Freelancer</a>
+                                            <!-- <ul class="dropdown-nav">
                                                 <li><a href="freelancers-grid-layout-full-page.html">Full Page Grid</a>
                                                 </li>
                                                 <li><a href="freelancers-grid-layout.html">Grid Layout</a></li>
                                                 <li><a href="freelancers-list-layout-1.html">List Layout 1</a></li>
                                                 <li><a href="freelancers-list-layout-2.html">List Layout 2</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li><a href="single-freelancer-profile.html">Freelancer Profile</a></li>
                                         <li><a href="{% url 'PostJobOnlineView' %}">Post a Job</a></li>
-                                        <li><a href="dashboard-post-a-task.html">Post a Task</a></li>
                                     </ul>
                                 </li>
 
                                 <li><a href="#">Dashboard</a>
                                     <ul class="dropdown-nav">
-                                        <li><a href="dashboard.html">Dashboard</a></li>
+                                        <li><a href="{% url 'DashboardView' %}">Dashboard</a></li>
                                         <li><a href="{% url 'LiveChatView' %}">Messages</a></li>
                                         <li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
                                         <li><a href="dashboard-reviews.html">Reviews</a></li>
