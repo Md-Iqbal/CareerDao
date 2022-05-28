@@ -159,7 +159,7 @@ def LoginView(request):
             next = request.POST.get('next', '/')
             return HttpResponseRedirect(next)
     else:
-        return render(request, 'customer-login.html')
+        return render(request, 'index.html')
 
 
 def LogoutView(request):

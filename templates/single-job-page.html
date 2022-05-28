@@ -130,8 +130,16 @@
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container">
 
+				{% if applied_job %}
+				<!-- disabled button with applied value -->
+				<a href="" class="apply-now-button popup-with-zoom-anim"
+					data-toggle="tooltip" data-placement="top" title="Applied" disabled>
+					<i class="icon-material-outline-check-circle"></i> Applied
+				</a>
+				{% else %}
 				<a href="#small-dialog" class="apply-now-button popup-with-zoom-anim" id="apply_now">Apply Now <i
 						class="icon-material-outline-arrow-right-alt"></i></a>
+				{% endif %}
 
 				<!-- Sidebar Widget -->
 				<div class="sidebar-widget">
@@ -241,7 +249,7 @@
 				</div>
 
 				<!-- Form -->
-				<form method="POST" id="apply-now-form" enctype="multipart/form-data">
+				<form method="POST" id="apply-now-form" enctype="multipart/form-data" action="{% url 'ApplyJobList' %}">
 					{% csrf_token %}
 					<div class="input-with-icon-left">
 						<i class="icon-material-outline-account-circle"></i>
@@ -257,7 +265,7 @@
 
 					<div class="uploadButton">
 						<input class="uploadButton-input" type="file" accept="image/*, application/pdf"
-							id="upload-cv" />
+							id="upload-cv" name="CV_File" />
 						<label class="uploadButton-button ripple-effect" for="upload-cv">Select File</label>
 						<span class="uploadButton-file-name">Upload your CV / resume relevant file. <br> Max. file size:
 							50 MB.</span>
@@ -302,57 +310,57 @@
 		});
 
 	});
-	$(document).on('submit', '#apply-now-form', function (e) {
-		e.preventDefault();
-		var element = $('#apply_now');
-		console.log("element is---------------> ",element);
-		var name = $('#name').val();
-		var emailaddress = $('#emailaddress').val();
-		var cv = $('#upload-cv').val();
-		var job_id = $('#job_id').val();
-		var user_id = $('#user_id').val();
-		var data = {
-			full_name: name,
-			email: emailaddress,
-			cv: cv,
-			job: job_id,
-			user: user_id
-		};
-		console.log("formData", data);
-		$.ajax({
-			url: '{% url "ApplyJobList" %}',
-			type: 'POST',
-			data: data,
-			headers: {
-				"X-CSRFToken": '{{ csrf_token }}'
-			},
-			success: function (data) {
-				console.log("data", data);
-				// Snackbar.show({
-				// 	text: 'Your application has been submitted successfully!',
-				// 	pos: 'bottom-center',
-				// 	showAction: false,
-				// 	actionText: "Dismiss",
-				// 	duration: 3000,
-				// 	textColor: '#fff',
-				// 	backgroundColor: '#383838'
-				// });
+	// $(document).on('submit', '#apply-now-form', function (e) {
+	// 	e.preventDefault();
+	// 	var element = $('#apply_now');
+	// 	console.log("element is---------------> ",element);
+	// 	var name = $('#name').val();
+	// 	var emailaddress = $('#emailaddress').val();
+	// 	var cv = $('#upload-cv').val();
+	// 	var job_id = $('#job_id').val();
+	// 	var user_id = $('#user_id').val();
+	// 	var data = {
+	// 		full_name: name,
+	// 		email: emailaddress,
+	// 		cv: cv,
+	// 		job: job_id,
+	// 		user: user_id
+	// 	};
+	// 	console.log("formData", data);
+	// 	$.ajax({
+	// 		url: '',
+	// 		type: 'POST',
+	// 		data: data,
+	// 		headers: {
+	// 			"X-CSRFToken": '{{ csrf_token }}'
+	// 		},
+	// 		success: function (data) {
+	// 			console.log("data", data);
+	// 			// Snackbar.show({
+	// 			// 	text: 'Your application has been submitted successfully!',
+	// 			// 	pos: 'bottom-center',
+	// 			// 	showAction: false,
+	// 			// 	actionText: "Dismiss",
+	// 			// 	duration: 3000,
+	// 			// 	textColor: '#fff',
+	// 			// 	backgroundColor: '#383838'
+	// 			// });
 
-			},
-			error: function (data) {
-				console.log("data", data);
-				// Snackbar.show({
-				// 	text: 'Your application cannot be submitted!',
-				// 	pos: 'bottom-center',
-				// 	showAction: false,
-				// 	actionText: "Dismiss",
-				// 	duration: 3000,
-				// 	textColor: '#fff',
-				// 	backgroundColor: '#383838'
-				// });
-			}
-	});
-	});
+	// 		},
+	// 		error: function (data) {
+	// 			console.log("data", data);
+	// 			// Snackbar.show({
+	// 			// 	text: 'Your application cannot be submitted!',
+	// 			// 	pos: 'bottom-center',
+	// 			// 	showAction: false,
+	// 			// 	actionText: "Dismiss",
+	// 			// 	duration: 3000,
+	// 			// 	textColor: '#fff',
+	// 			// 	backgroundColor: '#383838'
+	// 			// });
+	// 		}
+	// });
+	// });
 </script>
 
 <!-- Google API & Maps -->

@@ -1,5 +1,7 @@
 from email.mime import image
 from django.db import models
+from hitcount.models import HitCountMixin, HitCount
+from django.contrib.contenttypes.fields import GenericRelation
 from app_authApi.models import User
 
 # Create your models here.
@@ -25,6 +27,8 @@ class Freelancer(models.Model):
     document_name = models.CharField(max_length=25, null=True, blank=True)
     document_number = models.CharField(max_length=25, null=True, blank=True)
     document_image = models.ImageField(upload_to='documents/', null=True, blank=True)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -44,6 +48,8 @@ class Company(models.Model):
     company_phone = models.CharField(max_length=25, null=True, blank=True)
     company_website = models.CharField(max_length=25, null=True, blank=True)
     country = models.CharField(max_length=50, null=True, blank=True)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -73,6 +79,8 @@ class ProjectManager(models.Model):
     document_name = models.CharField(max_length=25, null=True, blank=True)
     document_number = models.CharField(max_length=25, null=True, blank=True)
     document_image = models.ImageField(upload_to='documents/', null=True, blank=True)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

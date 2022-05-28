@@ -1,10 +1,11 @@
-from django.urls import path
+from django.urls import include, path
 from . import views
 urlpatterns = [
     path('', views.HomeView, name="HomeView"),
+    path('<int:id>/', views.ProfileSettingsView, name="ProfileSettingsView"),
 #     path('/', views.HomeView, name="HomeView2"),
 #     path('register/', views.RegisterView, name="RegisterView"),
-     path('company/', views.CompanyView, name="CompanyView"),
+    path('company/', views.CompanyView, name="CompanyView"),
     path('chat/', views.LiveChatView, name="LiveChatView"),
     path('project-accept/', views.ProjectAcceptView, name="ProjectAcceptView"),
     path('project-award/', views.ProjectAwardView, name="ProjectAwardView"),
@@ -25,7 +26,7 @@ urlpatterns = [
     path('freelancer-grid/', views.FreelancerGridView, name="FreelancerGridView"),
     path('freelancer-grid-sidebar/', views.FreelancerGrid_with_SidebarView,
          name="FreelancerGrid_with_SidebarView"),
-    path('freelancer-profile/', views.FreelancerProfileView, name="FreelancerProfileView"),
+    path('freelancer-profile/<int:pk>/', views.FreelancerProfileView.as_view(), name="FreelancerProfileView"),
     path('freelancer-list/', views.FreelancerListView, name="FreelancerListView"),
     path('freelancer-list-sidebar/', views.FreelancerList_with_SidebarView,
          name="FreelancerList_with_SidebarView"),
@@ -38,4 +39,5 @@ urlpatterns = [
     path('profile/', views.ProfileView, name="ProfileView"),
     path('404/', views.UnknownURLView, name="UnknownURLView"),
     path('verify-message/', views.EmailVerificationNotificationView, name="EmailVerificationNotificationView"),
+    path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
 ]

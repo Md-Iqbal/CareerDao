@@ -19,4 +19,4 @@ class AppliedJobSerializer(WritableNestedModelSerializer):
     class Meta:
         model = AppliedJob
         fields = '__all__'
-        read_only_fields = ('id', 'created_at', 'updated_at',)
+        read_only_fields = ('id', 'applied_at', 'updated_at',)

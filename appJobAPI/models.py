@@ -63,6 +63,7 @@ class AppliedJob(models.Model):
     applied_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     appointed = models.BooleanField(default=False)
+    resigned = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return self.full_name

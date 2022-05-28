@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_j6d-cb3w+l#d-futobp5xm*9v*o=vdqq-q-#=4x)*r6s1)hj8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'app_authApi.User'
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'rest_framework_simplejwt',
+    'hitcount',
 
     #local apps
     'app_authApi',
@@ -153,7 +154,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-LOGIN_URL = '/user/login/'
+LOGIN_URL = '/api/v1/auth/sign-in/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

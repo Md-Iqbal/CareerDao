@@ -318,9 +318,9 @@
                                     </div>
 
                                     <ul class="user-menu-small-nav">
-                                        <li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i>
+                                        <li><a href="{% url 'DashboardView' %}"><i class="icon-material-outline-dashboard"></i>
                                                 Dashboard</a></li>
-                                        <li><a href="dashboard-settings.html"><i
+                                        <li><a href="{% url 'ProfileSettingsView' id=request.user.id %}"><i
                                                     class="icon-material-outline-settings"></i> Settings</a>
                                         </li>
                                         <li><a href="{% url 'logout' %}"><i
@@ -515,7 +515,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
-                        © 2019 <strong>Hireo</strong>. All Rights Reserved.
+                        © 2022 <strong>Daffodil International University</strong>. All Rights Reserved.
                     </div>
                 </div>
             </div>
