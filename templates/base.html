@@ -20,7 +20,7 @@
     <script src="{% static '' %}js/jquery-3.4.1.min.js"></script>
     <script src="{% static '' %}js/jquery-migrate-3.1.0.min.html"></script>
     <script type="text/javascript" language="JavaScript">
-        function messagepopup(params){
+        function messagepopup(params) {
             Snackbar.show({
                 text: params,
                 pos: 'bottom-center',
@@ -30,7 +30,7 @@
                 textColor: '#fff',
                 backgroundColor: '#383838'
             });
-            }
+        }
     </script>
 </head>
 
@@ -94,74 +94,21 @@
                                     </ul>
                                 </li>
 
-                                <li><a href="#">For Employers</a>
-                                    <ul class="dropdown-nav">
-                                        <li><a href="{% url 'FreelancerGrid_with_SidebarView' %}">Find a Freelancer</a>
-                                            <!-- <ul class="dropdown-nav">
-                                                <li><a href="freelancers-grid-layout-full-page.html">Full Page Grid</a>
-                                                </li>
-                                                <li><a href="freelancers-grid-layout.html">Grid Layout</a></li>
-                                                <li><a href="freelancers-list-layout-1.html">List Layout 1</a></li>
-                                                <li><a href="freelancers-list-layout-2.html">List Layout 2</a></li>
-                                            </ul> -->
-                                        </li>
-                                        <li><a href="{% url 'PostJobOnlineView' %}">Post a Job</a></li>
-                                    </ul>
+                                <li><a href="{% url 'FreelancerGrid_with_SidebarView' %}">Find a Freelancer</a>
                                 </li>
 
-                                <li><a href="#">Dashboard</a>
+                                <li><a href="#">Other</a>
                                     <ul class="dropdown-nav">
-                                        <li><a href="{% url 'DashboardView' %}">Dashboard</a></li>
-                                        <li><a href="{% url 'LiveChatView' %}">Messages</a></li>
-                                        <li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
-                                        <li><a href="dashboard-reviews.html">Reviews</a></li>
-                                        <li><a href="dashboard-manage-jobs.html">Jobs</a>
-                                            <ul class="dropdown-nav">
-                                                <li><a href="dashboard-manage-jobs.html">Manage Jobs</a></li>
-                                                <li><a href="dashboard-manage-candidates.html">Manage Candidates</a>
-                                                </li>
-                                                <li><a href="dashboard-post-a-job.html">Post a Job</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="dashboard-manage-tasks.html">Tasks</a>
-                                            <ul class="dropdown-nav">
-                                                <li><a href="dashboard-manage-tasks.html">Manage Tasks</a></li>
-                                                <li><a href="dashboard-manage-bidders.html">Manage Bidders</a></li>
-                                                <li><a href="dashboard-my-active-bids.html">My Active Bids</a></li>
-                                                <li><a href="dashboard-post-a-task.html">Post a Task</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="dashboard-settings.html">Settings</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown-nav">
-                                        <li>
-                                            <a href="#">Open Street Map</a>
-                                            <ul class="dropdown-nav">
-                                                <li><a href="jobs-list-layout-full-page-map-OpenStreetMap.html">Full
-                                                        Page List + Map</a></li>
-                                                <li><a href="jobs-grid-layout-full-page-map-OpenStreetMap.html">Full
-                                                        Page Grid + Map</a></li>
-                                                <li><a href="single-job-page-OpenStreetMap.html">Job Page</a></li>
-                                                <li><a href="single-company-profile-OpenStreetMap.html">Company
-                                                        Profile</a></li>
-                                                <li><a href="pages-contact-OpenStreetMap.html">Contact</a></li>
-                                                <li><a href="jobs-list-layout-1-OpenStreetMap.html">Location
-                                                        Autocomplete</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="pages-blog.html">Blog</a></li>
-                                        <li><a href="pages-pricing-plans.html">Pricing Plans</a></li>
+                                        <li><a href="{% url 'BlogGridView' %}">Blog</a></li>
+                                        <!-- <li><a href="pages-pricing-plans.html">Pricing Plans</a></li>
                                         <li><a href="pages-checkout-page.html">Checkout Page</a></li>
                                         <li><a href="pages-invoice-template.html">Invoice Template</a></li>
                                         <li><a href="pages-user-interface-elements.html">User Interface Elements</a>
                                         </li>
                                         <li><a href="pages-icons-cheatsheet.html">Icons Cheatsheet</a></li>
                                         <li><a href="pages-login.html">Login & Register</a></li>
-                                        <li><a href="pages-404.html">404 Page</a></li>
-                                        <li><a href="pages-contact.html">Contact</a></li>
+                                        <li><a href="pages-404.html">404 Page</a></li> -->
+                                        <li><a href="{% url 'ContactView' %}">Contact</a></li>
                                     </ul>
                                 </li>
 
@@ -318,14 +265,31 @@
                                     </div>
 
                                     <ul class="user-menu-small-nav">
-                                        <li><a href="{% url 'DashboardView' %}"><i class="icon-material-outline-dashboard"></i>
-                                                Dashboard</a></li>
-                                        <li><a href="{% url 'ProfileSettingsView' id=request.user.id %}"><i
-                                                    class="icon-material-outline-settings"></i> Settings</a>
+                                        <li><a href="{% url 'DashboardView' %}">
+                                                <i class="icon-material-outline-dashboard"></i> Dashboard
+                                            </a>
                                         </li>
-                                        <li><a href="{% url 'logout' %}"><i
-                                                    class="icon-material-outline-power-settings-new"></i>
-                                                Logout</a></li>
+                                        <li><a href="{% url 'LiveChatView' %}">
+                                                <i class="icon-material-outline-question-answer"></i> Messages
+                                                <!-- <span class="nav-tag">2</span>-->
+                                            </a>
+                                        </li>
+                                        <li><a href="dashboard-bookmarks.html">
+                                                <i class="icon-material-outline-star-border"></i> Bookmarks
+                                            </a>
+                                        </li>
+                                        <li><a href="dashboard-reviews.html">
+                                                <i class="icon-material-outline-rate-review"></i> Reviews
+                                            </a>
+                                        </li>
+                                        <li><a href="{% url 'ProfileSettingsView' id=request.user.id %}">
+                                                <i class="icon-material-outline-settings"></i> Settings
+                                            </a>
+                                        </li>
+                                        <li><a href="{% url 'logout' %}">
+                                                <i class="icon-material-outline-power-settings-new"></i> Logout
+                                            </a>
+                                        </li>
                                     </ul>
 
                                 </div>
@@ -333,197 +297,197 @@
 
                         </div>
                         <!-- User Menu / End -->
-                    {% endif %}
-                    <!-- Mobile Navigation Button -->
-                    <span class="mmenu-trigger">
-                        <button class="hamburger hamburger--collapse" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </span>
+                        {% endif %}
+                        <!-- Mobile Navigation Button -->
+                        <span class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </span>
+
+                    </div>
+                    <!-- Right Side Content / End -->
 
                 </div>
-                <!-- Right Side Content / End -->
-
             </div>
-    </div>
-    <!-- Header / End -->
+            <!-- Header / End -->
 
-    </header>
-    <div class="clearfix"></div>
-    <!-- Header Container / End -->
-    <!-- <div class="notification error closeable">
+        </header>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+        <!-- <div class="notification error closeable">
             {% for message in messages %}
             <p>{{ message }}</p>
             {% endfor %}
             <a class="close" href="#"></a>
         </div> -->
-    {% block content %}
+        {% block content %}
 
-    {% endblock content %}
-    <!-- Footer
+        {% endblock content %}
+        <!-- Footer
         ================================================== -->
-    <div id="footer">
+        <div id="footer">
 
-        <!-- Footer Top Section -->
-        <div class="footer-top-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
+            <!-- Footer Top Section -->
+            <div class="footer-top-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
 
-                        <!-- Footer Rows Container -->
-                        <div class="footer-rows-container">
+                            <!-- Footer Rows Container -->
+                            <div class="footer-rows-container">
 
-                            <!-- Left Side -->
-                            <div class="footer-rows-left">
-                                <div class="footer-row">
-                                    <div class="footer-row-inner footer-logo">
-                                        <img src="{% static '' %}images/logo2.png" alt="">
+                                <!-- Left Side -->
+                                <div class="footer-rows-left">
+                                    <div class="footer-row">
+                                        <div class="footer-row-inner footer-logo">
+                                            <img src="{% static '' %}images/logo2.png" alt="">
+                                        </div>
                                     </div>
                                 </div>
+
+                                <!-- Right Side -->
+                                <div class="footer-rows-right">
+
+                                    <!-- Social Icons -->
+                                    <div class="footer-row">
+                                        <div class="footer-row-inner">
+                                            <ul class="footer-social-links">
+                                                <li>
+                                                    <a href="#" title="Facebook" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-facebook-f"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Twitter" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Google Plus" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-google-plus-g"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="LinkedIn" data-tippy-placement="bottom"
+                                                        data-tippy-theme="light">
+                                                        <i class="icon-brand-linkedin-in"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Language Switcher -->
+                                    <div class="footer-row">
+                                        <div class="footer-row-inner">
+                                            <select class="selectpicker language-switcher"
+                                                data-selected-text-format="count" data-size="5">
+                                                <option selected>English</option>
+                                                <option>Français</option>
+                                                <option>Español</option>
+                                                <option>Deutsch</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+                            <!-- Footer Rows Container / End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Top Section / End -->
 
-                            <!-- Right Side -->
-                            <div class="footer-rows-right">
+            <!-- Footer Middle Section -->
+            <div class="footer-middle-section">
+                <div class="container">
+                    <div class="row">
 
-                                <!-- Social Icons -->
-                                <div class="footer-row">
-                                    <div class="footer-row-inner">
-                                        <ul class="footer-social-links">
-                                            <li>
-                                                <a href="#" title="Facebook" data-tippy-placement="bottom"
-                                                    data-tippy-theme="light">
-                                                    <i class="icon-brand-facebook-f"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Twitter" data-tippy-placement="bottom"
-                                                    data-tippy-theme="light">
-                                                    <i class="icon-brand-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="Google Plus" data-tippy-placement="bottom"
-                                                    data-tippy-theme="light">
-                                                    <i class="icon-brand-google-plus-g"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" title="LinkedIn" data-tippy-placement="bottom"
-                                                    data-tippy-theme="light">
-                                                    <i class="icon-brand-linkedin-in"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-                                <!-- Language Switcher -->
-                                <div class="footer-row">
-                                    <div class="footer-row-inner">
-                                        <select class="selectpicker language-switcher" data-selected-text-format="count"
-                                            data-size="5">
-                                            <option selected>English</option>
-                                            <option>Français</option>
-                                            <option>Español</option>
-                                            <option>Deutsch</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>For Candidates</h3>
+                                <ul>
+                                    <li><a href="#"><span>Browse Jobs</span></a></li>
+                                    <li><a href="#"><span>Add Resume</span></a></li>
+                                    <li><a href="#"><span>Job Alerts</span></a></li>
+                                    <li><a href="#"><span>My Bookmarks</span></a></li>
+                                </ul>
                             </div>
-
                         </div>
-                        <!-- Footer Rows Container / End -->
+
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>For Employers</h3>
+                                <ul>
+                                    <li><a href="#"><span>Browse Candidates</span></a></li>
+                                    <li><a href="#"><span>Post a Job</span></a></li>
+                                    <li><a href="#"><span>Post a Task</span></a></li>
+                                    <li><a href="#"><span>Plans & Pricing</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>Helpful Links</h3>
+                                <ul>
+                                    <li><a href="#"><span>Contact</span></a></li>
+                                    <li><a href="#"><span>Privacy Policy</span></a></li>
+                                    <li><a href="#"><span>Terms of Use</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Links -->
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <div class="footer-links">
+                                <h3>Account</h3>
+                                <ul>
+                                    <li><a href="#"><span>Log In</span></a></li>
+                                    <li><a href="#"><span>My Account</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter -->
+                        <div class="col-xl-4 col-lg-4 col-md-12">
+                            <h3><i class="icon-feather-mail"></i> Sign Up For a Newsletter</h3>
+                            <p>Weekly breaking news, analysis and cutting edge advices on job searching.</p>
+                            <form action="#" method="get" class="newsletter">
+                                <input type="text" name="fname" placeholder="Enter your email address">
+                                <button type="submit"><i class="icon-feather-arrow-right"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Footer Top Section / End -->
+            <!-- Footer Middle Section / End -->
 
-        <!-- Footer Middle Section -->
-        <div class="footer-middle-section">
-            <div class="container">
-                <div class="row">
-
-                    <!-- Links -->
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                        <div class="footer-links">
-                            <h3>For Candidates</h3>
-                            <ul>
-                                <li><a href="#"><span>Browse Jobs</span></a></li>
-                                <li><a href="#"><span>Add Resume</span></a></li>
-                                <li><a href="#"><span>Job Alerts</span></a></li>
-                                <li><a href="#"><span>My Bookmarks</span></a></li>
-                            </ul>
+            <!-- Footer Copyrights -->
+            <div class="footer-bottom-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            © 2022 <strong>Daffodil International University</strong>. All Rights Reserved.
                         </div>
-                    </div>
-
-                    <!-- Links -->
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                        <div class="footer-links">
-                            <h3>For Employers</h3>
-                            <ul>
-                                <li><a href="#"><span>Browse Candidates</span></a></li>
-                                <li><a href="#"><span>Post a Job</span></a></li>
-                                <li><a href="#"><span>Post a Task</span></a></li>
-                                <li><a href="#"><span>Plans & Pricing</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Links -->
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                        <div class="footer-links">
-                            <h3>Helpful Links</h3>
-                            <ul>
-                                <li><a href="#"><span>Contact</span></a></li>
-                                <li><a href="#"><span>Privacy Policy</span></a></li>
-                                <li><a href="#"><span>Terms of Use</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Links -->
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                        <div class="footer-links">
-                            <h3>Account</h3>
-                            <ul>
-                                <li><a href="#"><span>Log In</span></a></li>
-                                <li><a href="#"><span>My Account</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Newsletter -->
-                    <div class="col-xl-4 col-lg-4 col-md-12">
-                        <h3><i class="icon-feather-mail"></i> Sign Up For a Newsletter</h3>
-                        <p>Weekly breaking news, analysis and cutting edge advices on job searching.</p>
-                        <form action="#" method="get" class="newsletter">
-                            <input type="text" name="fname" placeholder="Enter your email address">
-                            <button type="submit"><i class="icon-feather-arrow-right"></i></button>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Footer Middle Section / End -->
+            <!-- Footer Copyrights / End -->
 
-        <!-- Footer Copyrights -->
-        <div class="footer-bottom-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        © 2022 <strong>Daffodil International University</strong>. All Rights Reserved.
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- Footer Copyrights / End -->
-
-    </div>
-    <!-- Footer / End -->
+        <!-- Footer / End -->
 
     </div>
     <!-- Wrapper / End -->

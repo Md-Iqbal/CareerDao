@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(Freelancer)
 admin.site.register(Company)
 admin.site.register(ProjectManager)
+admin.site.register(Message)

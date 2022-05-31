@@ -19,7 +19,9 @@
                 <div class="dashboard-nav-inner">
 
                     <ul data-submenu-title="Start">
-                        <li class="active"><a href="{% url 'DashboardView' %}"><i class="icon-material-outline-dashboard"></i>
+                        <!-- get current url -->
+                        <input type="hidden" id="url" value="{{ request.get_full_path }}">
+                        <li><a href="{% url 'DashboardView' %}"><i class="icon-material-outline-dashboard"></i>
                                 Dashboard</a></li>
                         <li><a href="{% url 'LiveChatView' %}"><i class="icon-material-outline-question-answer"></i>
                                 Messages
@@ -69,4 +71,7 @@
         </div>
     </div>
 </div>
+<!-- <script>
+    alert($('#url').val());
+</script> -->
 <!-- Dashboard Sidebar / End -->

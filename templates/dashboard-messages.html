@@ -4,19 +4,16 @@
 <!-- Dashboard Container -->
 <div class="dashboard-container">
 
-	<!-- Dashboard Sidebar
-	================================================== -->
 	{% block sidebar %}
 	{% include 'dashboard_sidebar.html' %}
 	{% endblock %}
-	<!-- Dashboard Sidebar / End -->
 
 
 	<!-- Dashboard Content
 	================================================== -->
 	<div class="dashboard-content-container" data-simplebar>
-		<div class="dashboard-content-inner" >
-			
+		<div class="dashboard-content-inner">
+
 			<!-- Dashboard Headline -->
 			<div class="dashboard-headline">
 				<h3>Messages</h3>
@@ -30,183 +27,98 @@
 					</ul>
 				</nav>
 			</div>
-	
-				<div class="messages-container margin-top-0">
 
-					<div class="messages-container-inner">
+			<div class="messages-container margin-top-0">
 
-						<!-- Messages -->
-						<div class="messages-inbox">
-							<div class="messages-headline">
-								<div class="input-with-icon">
-										<input id="autocomplete-input" type="text" placeholder="Search">
-									<i class="icon-material-outline-search"></i>
-								</div>
+				<div class="messages-container-inner">
+
+					<!-- Messages -->
+					<div class="messages-inbox">
+						<div class="messages-headline">
+							<div class="input-with-icon">
+								<input id="autocomplete-input" type="text" placeholder="Search">
+								<i class="icon-material-outline-search"></i>
 							</div>
-
-							<ul>
-								<li>
-									<a href="#">
-										<div class="message-avatar"><i class="status-icon status-online"></i><img src="{% static '' %}images/user-avatar-small-03.jpg" alt="" /></div>
-
-										<div class="message-by">
-											<div class="message-by-headline">
-												<h5>David Peterson</h5>
-												<span>4 hours ago</span>
-											</div>
-											<p>Thanks for reaching out. I'm quite busy right now on many</p>
-										</div>
-									</a>
-								</li>
-
-								<li class="active-message">
-									<a href="#">
-										<div class="message-avatar"><i class="status-icon status-offline"></i><img src="{% static '' %}images/user-avatar-small-02.jpg" alt="" /></div>
-
-										<div class="message-by">
-											<div class="message-by-headline">
-												<h5>Sindy Forest</h5>
-												<span>Yesterday</span>
-											</div>
-											<p>Hi Tom! Hate to break it to you but I'm actually on vacation</p>
-										</div>
-									</a>
-								</li>
-								
-								<li>
-									<a href="#">
-										<div class="message-avatar"><i class="status-icon status-offline"></i><img src="{% static '' %}images/user-avatar-placeholder.png" alt="" /></div>
-
-										<div class="message-by">
-											<div class="message-by-headline">
-												<h5>Sebastiano Piccio</h5>
-												<span>2 days ago</span>
-											</div>
-											<p>Hello, I want to talk about my project if you don't mind!</p>
-										</div>
-									</a>
-								</li>
-
-								<li>
-									<a href="#">
-										<div class="message-avatar"><i class="status-icon status-online"></i><img src="{% static '' %}images/user-avatar-placeholder.png" alt="" /></div>
-
-										<div class="message-by">
-											<div class="message-by-headline">
-												<h5>Marcin Kowalski</h5>
-												<span>2 days ago</span>
-											</div>
-											<p>Yes, I received payment. Thanks for cooperation!</p>
-										</div>
-									</a>
-								</li>
-
-							</ul>
 						</div>
-						<!-- Messages / End -->
 
-						<!-- Message Content -->
-						<div class="message-content">
+						<ul id="receipent_profile">
+							{% for user in known_user_profile %}
 
-							<div class="messages-headline">
-								<h4>Sindy Forest</h4>
-								<a href="#" class="message-action"><i class="icon-feather-trash-2"></i> Delete Conversation</a>
-							</div>
+							<li id="{{ user.user.id }}">
+								<a href="">
+									{% if user.image.url %}
+									<div class="message-avatar"><img
+											src="{{ user.image.url }}" alt="" /></div>
+									{% else %}
+									<div class="message-avatar"><img
+											src="{% static 'images/user-avatar-placeholder.png' %}" alt="" /></div>
+									{% endif %}
+									<div class="message-by">
+										{% if user.last_message %}
+										<div class="message-by-headline">
+											<h5>{{ user.user.username }}</h5>
+											<span>{{ user.last_message.created_at|timesince }} ago</span>
+										</div>
+										<p>{{ user.last_message.message }}</p>
+										{% else %}
+										<div class="message-by-headline">
+											<h5>{{ user.user.username }}</h5>
+											<span>No message yet</span>
+										</div>
+										{% endif %}
+									</div>
+								</a>
+							</li>
+							{% endfor %}
+							<!-- <li class="active-message">
+								<a href="#">
+									<div class="message-avatar"><i class="status-icon status-offline"></i><img
+											src="images/user-avatar-small-02.jpg" alt="" /></div>
+
+									<div class="message-by">
+										<div class="message-by-headline">
+											<h5>Sindy Forest</h5>
+											<span>Yesterday</span>
+										</div>
+										<p>Hi Tom! Hate to break it to you but I'm actually on vacation</p>
+									</div>
+								</a>
+							</li> -->
+						</ul>
+					</div>
+					<!-- Messages / End -->
+
+					<!-- Message Content -->
+					<div class="message-content">
+
+						<div class="messages-headline" id="message_name_box">
 							
-							<!-- Message Content Inner -->
-							<div class="message-content-inner">
-									
-									<!-- Time Sign -->
-									<div class="message-time-sign">
-										<span>28 June, 2019</span>
-									</div>
-
-									<div class="message-bubble me">
-										<div class="message-bubble-inner">
-											<div class="message-avatar"><img src="{% static '' %}images/user-avatar-small-01.jpg" alt="" /></div>
-											<div class="message-text"><p>Thanks for choosing my offer. I will start working on your project tomorrow.</p></div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-
-									<div class="message-bubble">
-										<div class="message-bubble-inner">
-											<div class="message-avatar"><img src="{% static '' %}images/user-avatar-small-02.jpg" alt="" /></div>
-											<div class="message-text"><p>Great. If you need any further clarification let me know. 👍</p></div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-
-									<div class="message-bubble me">
-										<div class="message-bubble-inner">
-											<div class="message-avatar"><img src="{% static '' %}images/user-avatar-small-01.jpg" alt="" /></div>
-											<div class="message-text"><p>Ok, I will. 😉</p></div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-
-									<!-- Time Sign -->
-									<div class="message-time-sign">
-										<span>Yesterday</span>
-									</div>
-
-									<div class="message-bubble me">
-										<div class="message-bubble-inner">
-											<div class="message-avatar"><img src="{% static '' %}images/user-avatar-small-01.jpg" alt="" /></div>
-											<div class="message-text"><p>Hi Sindy, I just wanted to let you know that project is finished and I'm waiting for your approval.</p></div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-
-									<div class="message-bubble">
-										<div class="message-bubble-inner">
-											<div class="message-avatar"><img src="{% static '' %}images/user-avatar-small-02.jpg" alt="" /></div>
-											<div class="message-text"><p>Hi Tom! Hate to break it to you, but I'm actually on vacation 🌴 until Sunday so I can't check it now. 😎</p></div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-
-									<div class="message-bubble me">
-										<div class="message-bubble-inner">
-											<div class="message-avatar"><img src="{% static '' %}images/user-avatar-small-01.jpg" alt="" /></div>
-											<div class="message-text"><p>Ok, no problem. But don't forget about last payment. 🙂</p></div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-
-									<div class="message-bubble">
-										<div class="message-bubble-inner">
-											<div class="message-avatar"><img src="{% static '' %}images/user-avatar-small-02.jpg" alt="" /></div>
-											<div class="message-text">
-												<!-- Typing Indicator -->
-												<div class="typing-indicator">
-													<span></span>
-													<span></span>
-													<span></span>
-												</div>
-											</div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-							</div>
-							<!-- Message Content Inner / End -->
-							
-							<!-- Reply Area -->
-							<div class="message-reply">
-								<textarea cols="1" rows="1" placeholder="Your Message" data-autoresize></textarea>
-								<button class="button ripple-effect">Send</button>
-							</div>
-
 						</div>
-						<!-- Message Content -->
+
+						<!-- Message Content Inner -->
+						<div class="message-content-inner" id="message_box">
+
+							
+						</div>
+						<!-- Message Content Inner / End -->
+
+						<!-- Reply Area -->
+						<div class="message-reply">
+							<textarea id="new_message" cols="1" rows="1" placeholder="Your Message" data-autoresize></textarea>
+							<input type="hidden" value="{{ csrf_token }}" id="csrf_token">
+							<button class="button ripple-effect" onclick="send_message()">Send</button>
+						</div>
 
 					</div>
+					<!-- Message Content -->
+
+				</div>
 			</div>
 			<!-- Messages Container / End -->
 
 
 
-			
+
 			<!-- Footer -->
 			<div class="dashboard-footer-spacer"></div>
 			<div class="small-footer margin-top-15">
@@ -248,6 +160,7 @@
 <!-- Apply for a job popup
 ================================================== -->
 <div id="small-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+	
 
 	<!--Tabs -->
 	<div class="sign-in-form">
@@ -260,12 +173,12 @@
 
 			<!-- Tab -->
 			<div class="popup-tab-content" id="tab">
-				
+
 				<!-- Welcome Text -->
 				<div class="welcome-text">
 					<h3>Do Not Forget 😎</h3>
 				</div>
-					
+
 				<!-- Form -->
 				<form method="post" id="add-note">
 
@@ -278,33 +191,188 @@
 					<textarea name="textarea" cols="10" placeholder="Note" class="with-border"></textarea>
 
 				</form>
-				
+
 				<!-- Button -->
-				<button class="button full-width button-sliding-icon ripple-effect" type="submit" form="add-note">Add Note <i class="icon-material-outline-arrow-right-alt"></i></button>
+				<button class="button full-width button-sliding-icon ripple-effect" type="submit" form="add-note">Add
+					Note <i class="icon-material-outline-arrow-right-alt"></i></button>
 
 			</div>
 
 		</div>
 	</div>
+	<input type="hidden" id="current_user" value="{{ request.user.id }}">
+	<input type="hidden" id="current_user_username" value="{{ request.user.username }}">
 </div>
 <!-- Apply for a job popup / End -->
 
 
 <!-- Snackbar // documentation: https://www.polonel.com/snackbar/ -->
 <script>
-// Snackbar for user status switcher
-$('#snackbar-user-status label').click(function() { 
-	Snackbar.show({
-		text: 'Your status has been changed!',
-		pos: 'bottom-center',
-		showAction: false,
-		actionText: "Dismiss",
-		duration: 3000,
-		textColor: '#fff',
-		backgroundColor: '#383838'
+	// Snackbar for user status switcher
+	$('#snackbar-user-status label').click(function () {
+		Snackbar.show({
+			text: 'Your status has been changed!',
+			pos: 'bottom-center',
+			showAction: false,
+			actionText: "Dismiss",
+			duration: 3000,
+			textColor: '#fff',
+			backgroundColor: '#383838'
+		});
 	}); 
-}); 
 </script>
+<script>
+	// get user info from unorder list loop
+	//int message_receiver_id
+	var message_receiver_id = 0;
+	var message_provider_id = 0; 
+	var message_provider_username = $('#current_user_username').val();
+	$("#receipent_profile li").on('click', function () {
+		var receipent_id = $(this).attr('id');
+		var current_user_id = $('#current_user').val();
+		message_receiver_id = receipent_id;
+		message_provider_id = current_user_id;
+		console.log("receipent_id: " + receipent_id + " current_user_id: " + current_user_id);
+		var patch = '{% url "MessageLoadView" receiver_id=0 sender_id=1 %}'.replace('0', receipent_id).replace('1', current_user_id);
+		$.ajax({
+			url: patch,
+			type: 'GET',
+			success: function (data, receipent_id, current_user_id) {
+				// console.log("Success Response Data",data);
+				message_bar(data, receipent_id, current_user_id);
+				render_message(data);
+			},
+			error: function (data, receipent_id, current_user_id) {
+				console.log("Error Response Data",data);
+			}
+		});
+
+	});
+	// render_message function
+
+	// <div class="message-content-inner">
+	// <div class="message-bubble me">
+	// 		<div class="message-bubble-inner">
+	// 			<div class="message-avatar"><img src="images/user-avatar-small-01.jpg" alt="" /></div>
+	// 			<div class="message-text"><p>Thanks for choosing my offer. I will start working on your project tomorrow.</p></div>
+	// 		</div>
+	// 		<div class="clearfix"></div>
+	// 	</div>
+	// </div>
+	
+	function send_message() {
+		var new_message = $('#new_message').val();
+		var csrf = $('#csrf_token').val();
+		// message_receiver_id message_provider_id
+		// make empty new_message
+		
+		var data = {
+			'receiver': message_receiver_id,
+			'sender': message_provider_id,
+			'message': new_message
+		};
+		$('#new_message').val('');
+		console.log("data: ", data);
+		patch = '{% url "MessageLoadView" receiver_id=0 sender_id=1 %}'.replace('0', message_receiver_id).replace('1', message_provider_id);	
+		$.ajax({
+			url: patch,
+			type: 'POST',
+			data: data,
+			headers: {
+				'X-CSRFToken': csrf
+			},
+			success: function (data) {
+				console.log("Success Response Data", data);
+				render_message(data, message_receiver_id, message_provider_id);
+			},
+			error: function (data) {
+				console.log("Error Response Data", data);
+			}
+		});
+	}
 
 
+	function render_message(data, receipent_id, current_user_id) {
+		// jQuery.noConflict();
+		try {
+			var element = '';
+			var i = 0;
+			var image = '';
+			var message = '';
+			console.log("Inside try block");
+			//get html code of #message_box $(this).
+			var message_box = $('#message_box').html();
+			var data_length = data.data.length;
+			console.log("data", data);
+
+			for(i=0;i<data_length;i++){
+				console.log("Inside for loop");
+				if(data.data[i].sender == message_provider_username){
+					console.log("Inside if loop");
+					element += '<div class="message-content-inner" id="message_box">';
+					element += '<div class="message-bubble me">';
+					element += '<div class="message-bubble-inner">';
+					element += '<div class="message-avatar"><img src="'+ data.sender.image +'" alt="" /></div>';
+					element += '<div class="message-text"><p>'+data.data[i].message+'</p></div>';
+					element += '</div>';
+					element += '<div class="clearfix"></div>';
+					element += '</div>';
+					element += '</div>';
+				}else{
+					console.log("Inside else loop");
+					element += '<div class="message-content-inner" id="message_box">';
+					element += '<div class="message-bubble">';
+					element += '<div class="message-bubble-inner">';
+					element += '<div class="message-avatar"><img src="'+ data.receiver.image +'" alt="" /></div>';
+					element += '<div class="message-text"><p>'+data.data[i].message+'</p></div>';
+					element += '</div>';
+					element += '<div class="clearfix"></div>';
+					element += '</div>';
+					element += '</div>';
+				}
+			}
+			$('#message_box').html(element);
+			console.log("element: ", element);
+
+		} catch (e) {
+			console.log(e);
+		}
+		console.log("message_box: ", message_box);
+		}
+		function message_bar(data, receipent_id, current_user_id){
+			var message_bar = $('#message_name_box').html();
+			element_bar = '';
+			patch = '{% url "ChatDeleteView" receiver_id=0 sender_id=1 %}'.replace('0', message_receiver_id).replace('1', message_provider_id);
+			element_bar += '<h4>'+data.receiver.username+'</h4>';
+			element_bar += '<a href="'+ patch +'" class="message-action"><i class="icon-feather-trash-2"></i> Delete Conversation</a>';
+			$('#message_name_box').html(element_bar);
+		}
+</script>
 {% endblock content %}
+<!-- Time Sign -->
+<!-- <div class="message-time-sign">
+								<span>28 June, 2019</span>
+							</div> -->
+
+<!-- <div class="message-bubble me">
+	<div class="message-bubble-inner">
+		<div class="message-avatar"><img src="images/user-avatar-small-01.jpg" alt="" />
+		</div>
+		<div class="message-text">
+			<p>Thanks for choosing my offer. I will start working on your project tomorrow.
+			</p>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class="message-bubble">
+	<div class="message-bubble-inner">
+		<div class="message-avatar"><img src="images/user-avatar-small-02.jpg" alt="" />
+		</div>
+		<div class="message-text">
+			<p>Great. If you need any further clarification let me know. 👍</p>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div> -->

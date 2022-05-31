@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.forms import ValidationError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from app_authApi.models import User
 from rest_framework import generics
 from rest_framework.authentication import BasicAuthentication
@@ -113,5 +113,4 @@ class ApplyJobDetails(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes = (AllowAny,)
     serializer_class = AppliedJobSerializer
     queryset = AppliedJob.objects.all()
-
 

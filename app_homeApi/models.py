@@ -87,3 +87,30 @@ class ProjectManager(models.Model):
     def __str__(self):
         return self.username
     
+class Message(models.Model):
+    id = models.AutoField(primary_key=True)
+    sender = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='sender',
+        null=True,
+        blank=True
+    )
+    receiver = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='receiver',
+        null=True,
+        blank=True
+    )
+    message = models.TextField(max_length=500, null=True, blank=True)
+    seen = models.BooleanField(default=False)
+    delivered = models.BooleanField(default=False)
+    typing = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+
+    # def __str__(self):
+    #     return self.message
