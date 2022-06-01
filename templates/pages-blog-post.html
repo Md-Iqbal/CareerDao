@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load hitcount_tags %}
 {% block content %}
 <!-- Content
 ================================================== -->
@@ -36,13 +37,13 @@
 				<div class="blog-post-thumbnail">
 					<div class="blog-post-thumbnail-inner">
 						<span class="blog-item-tag">Tips</span>
-						<img src="images/blog-04.jpg" alt="">
+						<img src="{{ news.image.url }}" alt="">
 					</div>
 				</div>
 
 				<!-- Blog Post Content -->
 				<div class="blog-post-content">
-					<h3 class="margin-bottom-10">5 Myths That Prevent Job Seekers from Overcoming Failure</h3>
+					<h3 class="margin-bottom-10">{{ new.title }}</h3>
 
 					<div class="blog-post-info-list margin-bottom-20">
 						<a href="#" class="blog-post-info">22 July 2019</a>

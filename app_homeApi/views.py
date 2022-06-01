@@ -378,12 +378,41 @@ def DashboardView(request):
     return render(request, 'dashboard.html', context)
 
 
-def BlogSinglePostView(request, id):
-    return render(request, 'pages-blog-post.html')
+# def BlogSinglePostView(request, id):
+#     return render(request, 'pages-blog-post.html')
 
+
+class BlogSinglePostView(HitCountDetailView):
+    model = News
+    template_name = 'pages-blog-post.html'
+    context_object_name = 'news'
+    id = 'id'
+    # set to True to count the hit
+    count_hit = True
+
+    def get_context_data(self, **kwargs):
+        print('get_context_data')
+        print(kwargs)
+        context = super(BlogSinglePostView, self).get_context_data(**kwargs)
+        context.update({
+            'trending_posts': News.objects.order_by('-hit_count_generic__hits')[:3],
+            'previous_post': News.objects.filter(id__lt=self.object.id).last(),
+            'next_post': News.objects.filter(id__gt=self.object.id).first(),
+        })
+        return context
 
 def BlogGridView(request):
-    return render(request, 'pages-blog.html')
+    news = News.objects.all()
+    featured = News.objects.filter(is_featured=True)
+    top_news = News.objects.order_by('-hit_count_generic__hits')[:3]
+    recent_news = News.objects.order_by('-created_at')[:4]
+    context = {
+        'news': news,
+        'featured': featured,
+        'top_news': top_news,
+        'recent_news': recent_news,
+    }
+    return render(request, 'pages-blog.html', context)
 
 
 def Blog_with_SidebarView(request):

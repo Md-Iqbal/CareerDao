@@ -86,7 +86,24 @@ class ProjectManager(models.Model):
 
     def __str__(self):
         return self.username
-    
+
+
+class News(models.Model):
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=50, null=True, blank=True)
+    description = models.TextField(max_length=1500, null=True, blank=True)
+    qoute = models.CharField(max_length=200, null=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    is_featured = models.BooleanField(default=False)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
 class Message(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(

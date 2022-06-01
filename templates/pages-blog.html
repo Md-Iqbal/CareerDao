@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load hitcount_tags %}
 {% block content %}
 <!-- Content
 ================================================== -->
@@ -117,76 +118,30 @@
 				<div class="section-headline margin-top-60 margin-bottom-35">
 					<h4>Recent Posts</h4>
 				</div>
-
+				{% if recent_news %}
+				{% for news in recent_news %}
 				<!-- Blog Post -->
-				<a href="pages-blog-post.html" class="blog-post">
+				<a href="{% url 'BlogSinglePostView' id=news.id %}" class="blog-post">
 					<!-- Blog Post Thumbnail -->
+					{% if news.image %}
 					<div class="blog-post-thumbnail">
 						<div class="blog-post-thumbnail-inner">
 							<span class="blog-item-tag">Tips</span>
-							<img src="images/blog-01a.jpg" alt="">
+							<img src="{{ news.image.url }}" alt="">
 						</div>
 					</div>
+					{% endif %}
 					<!-- Blog Post Content -->
 					<div class="blog-post-content">
-						<span class="blog-post-date">22 July 2019</span>
-						<h3>16 Ridiculously Easy Ways to Find & Keep a Remote Job</h3>
-						<p>Efficiently myocardinate market-driven innovation via open-source alignments. Dramatically engage high-payoff infomediaries rather than. </p>
+						<span class="blog-post-date">{{ news.created_at|date:"D, d F, Y" }}</span>
+						<h3>{{ news.title }}</h3>
+						<p>{{ news.description|truncatewords:50 }}</p>
 					</div>
 					<!-- Icon -->
 					<div class="entry-icon"></div>
 				</a>
-				
-				<!-- Blog Post -->
-				<a href="pages-blog-post.html" class="blog-post">
-					<!-- Blog Post Thumbnail -->
-					<div class="blog-post-thumbnail">
-						<div class="blog-post-thumbnail-inner">
-							<span class="blog-item-tag">Recruiting</span>
-							<img src="images/blog-02a.jpg" alt="">
-						</div>
-					</div>
-					<!-- Blog Post Content -->
-					<div class="blog-post-content">
-						<span class="blog-post-date">29 June 2019</span>
-						<h3>How to "Woo" a Recruiter and Land Your Dream Job</h3>
-						<p>Efficiently myocardinate market-driven innovation via open-source alignments. Dramatically engage high-payoff infomediaries rather than. </p>
-					</div>
-				</a>
-
-				<!-- Blog Post -->
-				<a href="pages-blog-post.html" class="blog-post">
-					<!-- Blog Post Thumbnail -->
-					<div class="blog-post-thumbnail">
-						<div class="blog-post-thumbnail-inner">
-							<span class="blog-item-tag">Marketing</span>
-							<img src="images/blog-03a.jpg" alt="">
-						</div>
-					</div>
-					<!-- Blog Post Content -->
-					<div class="blog-post-content">
-						<span class="blog-post-date">10 June 2019</span>
-						<h3>11 Tips to Help You Get New Clients Through Cold Calling</h3>
-						<p>Efficiently myocardinate market-driven innovation via open-source alignments. Dramatically engage high-payoff infomediaries rather than. </p>
-					</div>
-				</a>
-
-				<!-- Blog Post -->
-				<a href="pages-blog-post.html" class="blog-post">
-					<!-- Blog Post Thumbnail -->
-					<div class="blog-post-thumbnail">
-						<div class="blog-post-thumbnail-inner">
-							<span class="blog-item-tag">Tips</span>
-							<img src="images/blog-04a.jpg" alt="">
-						</div>
-					</div>
-					<!-- Blog Post Content -->
-					<div class="blog-post-content">
-						<span class="blog-post-date">5 June 2019</span>
-						<h3>5 Myths That Prevent Job Seekers from Overcoming Failure</h3>
-						<p>Efficiently myocardinate market-driven innovation via open-source alignments. Dramatically engage high-payoff infomediaries rather than. </p>
-					</div>
-				</a>
+				{% endfor %}
+				{% endif %}
 
 				<!-- Pagination -->
 				<div class="clearfix"></div>
