@@ -73,7 +73,7 @@
 
 			<!-- Row -->
 			<div class="row">
-
+				{% if user.is_company or user.is_freelancer or user.is_project_manager %}
 				<div class="col-xl-6">
 					<!-- Dashboard Box -->
 					<div class="dashboard-box main-box-in-row">
@@ -87,6 +87,10 @@
 					<!-- Dashboard Box / End -->
 				</div>
 				<div class="col-xl-6">
+				{% else %}
+				<div class="col-xl-12">
+				{% endif %}
+
 
 					<!-- Dashboard Box -->
 					<!-- If you want adjust height of two boxes 
@@ -164,68 +168,19 @@
 						</div>
 						<div class="content">
 							<ul class="dashboard-box-list">
+								{% for i in job_available_to_apply %}
 								<li>
 									<span class="notification-icon"><i class="icon-material-outline-group"></i></span>
 									<span class="notification-text">
-										<strong>Michael Shannah</strong> applied for a job <a href="#">Full Stack
-											Software Engineer</a>
+										<strong>{{ i.company_name.company_name }}</strong> posted a circular for a job of <a href="{% url 'JobDetailView' id=i.id %}">{{ i.designation }}</a>
 									</span>
 									<!-- Buttons -->
 									<div class="buttons-to-right">
-										<a href="#" class="button ripple-effect ico" title="Mark as read"
-											data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
+										<a href="#" class="button ripple-effect ico" title="Mark as read" data-tippy-placement="left"><i
+												class="icon-feather-check-square"></i></a>
 									</div>
 								</li>
-								<li>
-									<span class="notification-icon"><i class=" icon-material-outline-gavel"></i></span>
-									<span class="notification-text">
-										<strong>Gilber Allanis</strong> placed a bid on your <a href="#">iOS App
-											Development</a> project
-									</span>
-									<!-- Buttons -->
-									<div class="buttons-to-right">
-										<a href="#" class="button ripple-effect ico" title="Mark as read"
-											data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
-									</div>
-								</li>
-								<li>
-									<span class="notification-icon"><i
-											class="icon-material-outline-autorenew"></i></span>
-									<span class="notification-text">
-										Your job listing <a href="#">Full Stack Software Engineer</a> is expiring
-									</span>
-									<!-- Buttons -->
-									<div class="buttons-to-right">
-										<a href="#" class="button ripple-effect ico" title="Mark as read"
-											data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
-									</div>
-								</li>
-								<li>
-									<span class="notification-icon"><i class="icon-material-outline-group"></i></span>
-									<span class="notification-text">
-										<strong>Sindy Forrest</strong> applied for a job <a href="#">Full Stack Software
-											Engineer</a>
-									</span>
-									<!-- Buttons -->
-									<div class="buttons-to-right">
-										<a href="#" class="button ripple-effect ico" title="Mark as read"
-											data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
-									</div>
-								</li>
-								<li>
-									<span class="notification-icon"><i
-											class="icon-material-outline-rate-review"></i></span>
-									<span class="notification-text">
-										<strong>David Peterson</strong> left you a <span class="star-rating no-stars"
-											data-rating="5.0"></span> rating after finishing <a href="#">Logo Design</a>
-										task
-									</span>
-									<!-- Buttons -->
-									<div class="buttons-to-right">
-										<a href="#" class="button ripple-effect ico" title="Mark as read"
-											data-tippy-placement="left"><i class="icon-feather-check-square"></i></a>
-									</div>
-								</li>
+								{% endfor %}
 							</ul>
 						</div>
 					</div>

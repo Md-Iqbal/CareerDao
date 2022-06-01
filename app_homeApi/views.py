@@ -1,5 +1,6 @@
 from audioop import reverse
 from http.client import HTTPResponse
+import imp
 from queue import PriorityQueue
 from xml.etree.ElementTree import fromstring
 from django.views.decorators.csrf import csrf_exempt
@@ -26,13 +27,16 @@ from .models import *
 # Create your views here.
 
 # @login_required
+
+
 def HomeView(request):
-    ### get data after email verification
+    # get data after email verification
     user = request.user
     if User.objects.filter(id=user.id).exists():
         user = User.objects.get(id=user.id)
         return render(request, 'index.html', {'user': user})
     return render(request, 'index.html')
+
 
 @login_required
 def ProfileSettingsView(request, id):
@@ -69,26 +73,31 @@ def ProfileSettingsView(request, id):
         print(e)
         return render(request, 'pages-404.html')
 
+
 def CompanyView(request):
     return render(request, 'browse-companies.html')
+
 
 @login_required
 def LiveChatView(request):
     admin = User.objects.filter(is_admin=True)
-    known_user = User.objects.all().exclude(id = request.user.id).exclude(id__in=admin)
+    known_user = User.objects.all().exclude(
+        id=request.user.id).exclude(id__in=admin)
     known_user_profile = []
     for user in known_user:
         if user.is_freelancer:
             known_user_profile.append(Freelancer.objects.get(user=user))
-            #last message for each user in known_user
+            # last message for each user in known_user
             known_user_profile[-1].last_message = Message.objects.filter(
-                Q(sender=user, receiver=request.user) | Q(sender=request.user, receiver=user)
+                Q(sender=user, receiver=request.user) | Q(
+                    sender=request.user, receiver=user)
             ).last()
         elif user.is_company:
             known_user_profile.append(Company.objects.get(user=user))
-            #last message for each user in known_user
+            # last message for each user in known_user
             known_user_profile[-1].last_message = Message.objects.filter(
-                Q(sender=user, receiver=request.user) | Q(sender=request.user, receiver=user)
+                Q(sender=user, receiver=request.user) | Q(
+                    sender=request.user, receiver=user)
             ).last()
 
         elif user.is_project_manager:
@@ -99,17 +108,20 @@ def LiveChatView(request):
     }
     return render(request, 'dashboard-messages.html', context)
 
-#message load API for reciever and sender
+# message load API for reciever and sender
+
+
 @login_required
 def MessageLoadView(request, receiver_id, sender_id):
-    print("Sender++++++++Receiver =+++> ",receiver_id, sender_id)
+    print("Sender++++++++Receiver =+++> ", receiver_id, sender_id)
     if request.method == 'GET':
         print("get")
         try:
             print("try")
             receiver = User.objects.get(id=receiver_id)
             sender = User.objects.get(id=sender_id)
-            messages = Message.objects.filter(Q(receiver=receiver, sender=sender) | Q(receiver=sender, sender=receiver)).order_by('created_at')
+            messages = Message.objects.filter(Q(receiver=receiver, sender=sender) | Q(
+                receiver=sender, sender=receiver)).order_by('created_at')
             if sender.is_freelancer:
                 sender_profile = Freelancer.objects.get(user=sender)
                 sender_serializer = FreelancerSerializer(sender_profile)
@@ -127,16 +139,17 @@ def MessageLoadView(request, receiver_id, sender_id):
                 receiver_serializer = CompanySerializer(receiver_profile)
             elif receiver.is_project_manager:
                 receiver_profile = ProjectManager.objects.get(user=receiver)
-                receiver_serializer = ProjectManagerSerializer(receiver_profile)
+                receiver_serializer = ProjectManagerSerializer(
+                    receiver_profile)
 
             serializer = MessageSerializer(messages, many=True)
-            print("Serializer data ==========>>>>>> ",serializer.data)
+            print("Serializer data ==========>>>>>> ", serializer.data)
             return JsonResponse({
                 'status': 'success',
                 'data': serializer.data,
                 'sender': sender_serializer.data,
                 'receiver': receiver_serializer.data,
-                
+
             })
         except Exception as e:
             print("Exception occured +++++> ", e)
@@ -163,7 +176,8 @@ def MessageLoadView(request, receiver_id, sender_id):
             if serializer.is_valid():
                 print("serializer is valid")
                 serializer.save()
-                messages = Message.objects.filter(Q(receiver=receiver_id.id, sender=sender_id.id) | Q(receiver=sender_id.id, sender=receiver_id.id)).order_by('created_at')
+                messages = Message.objects.filter(Q(receiver=receiver_id.id, sender=sender_id.id) | Q(
+                    receiver=sender_id.id, sender=receiver_id.id)).order_by('created_at')
                 if sender_id.is_freelancer:
                     sender_profile = Freelancer.objects.get(user=sender_id.id)
                     sender_serializer = FreelancerSerializer(sender_profile)
@@ -171,16 +185,21 @@ def MessageLoadView(request, receiver_id, sender_id):
                     sender_profile = Company.objects.get(user=sender_id.id)
                     sender_serializer = CompanySerializer(sender_profile)
                 elif sender_id.is_project_manager:
-                    sender_profile = ProjectManager.objects.get(user=sender_id.id)
-                    sender_serializer = ProjectManagerSerializer(sender_profile)
+                    sender_profile = ProjectManager.objects.get(
+                        user=sender_id.id)
+                    sender_serializer = ProjectManagerSerializer(
+                        sender_profile)
                 if receiver_id.is_freelancer:
-                    receiver_profile = Freelancer.objects.get(user=receiver_id.id)
-                    receiver_serializer = FreelancerSerializer(receiver_profile)
+                    receiver_profile = Freelancer.objects.get(
+                        user=receiver_id.id)
+                    receiver_serializer = FreelancerSerializer(
+                        receiver_profile)
                 elif receiver_id.is_company:
                     receiver_profile = Company.objects.get(user=receiver_id.id)
                     receiver_serializer = CompanySerializer(receiver_profile)
                 elif receiver_id.is_project_manager:
-                    receiver_profile = ProjectManager.objects.get(user=receiver_id.id)
+                    receiver_profile = ProjectManager.objects.get(
+                        user=receiver_id.id)
                     receiver_serializer = ProjectManagerSerializer(
                         receiver_profile)
                 serializer = MessageSerializer(messages, many=True)
@@ -192,7 +211,7 @@ def MessageLoadView(request, receiver_id, sender_id):
                 })
             return JsonResponse(serializer.errors, status=400)
         except Exception as e:
-            print("Exception occured +++++> ",e)
+            print("Exception occured +++++> ", e)
             return JsonResponse({'error': 'User not found'}, status=404)
 
 
@@ -200,11 +219,13 @@ def ChatDeleteView(request, receiver_id, sender_id):
     print("try")
     receiver = User.objects.get(id=receiver_id)
     sender = User.objects.get(id=sender_id)
-    messages = Message.objects.filter(Q(receiver=receiver, sender=sender) | Q(receiver=sender, sender=receiver))
+    messages = Message.objects.filter(
+        Q(receiver=receiver, sender=sender) | Q(receiver=sender, sender=receiver))
     messages.delete()
     print("messages deleted")
     url = '/chat/'
     return HttpResponseRedirect(url)
+
 
 def ProjectAcceptView(request):
     return render(request, 'project-accept.html')
@@ -224,7 +245,7 @@ def ProjectMilestoneView(request):
 
 def FeatureJobOfflineGridView(request):
     jobs = PostedJob.objects.filter(is_active=True)
-    #paginator
+    # paginator
     page = request.GET.get("page")
     paginator = Paginator(jobs, 12)
     try:
@@ -252,15 +273,17 @@ def JobDetailView(request, id):
     print(id)
     try:
         job = PostedJob.objects.get(id=id)
-        company = Company.objects.get(id = job.company_name.id)
-        #similar type jobs without current job
-        similar_jobs = PostedJob.objects.filter(job_type=job.job_type).exclude(id=job.id)
+        company = Company.objects.get(id=job.company_name.id)
+        # similar type jobs without current job
+        similar_jobs = PostedJob.objects.filter(
+            job_type=job.job_type).exclude(id=job.id)
         print(company)
-        #if request.user is applied for this job
+        # if request.user is applied for this job
         if AppliedJob.objects.filter(job_id=job.id, email=request.user.email).exists():
             print('applied if exists')
-            applied_job = AppliedJob.objects.filter(job_id=job.id, email=request.user.email)            
-            print("Applied job ",applied_job)
+            applied_job = AppliedJob.objects.filter(
+                job_id=job.id, email=request.user.email)
+            print("Applied job ", applied_job)
             context = {
                 'job': job,
                 'company': company,
@@ -272,13 +295,13 @@ def JobDetailView(request, id):
                 'job': job,
                 'company': company,
                 'similar_jobs': similar_jobs,
-                #null to applied_job
+                # null to applied_job
                 'applied_job': None,
             }
         print(context)
         return render(request, 'single-job-page.html', context)
     except exception as e:
-        print('job not found   ', e) 
+        print('job not found   ', e)
         return render(request, 'pages-404.html')
 
 
@@ -315,6 +338,8 @@ def FreelancerGrid_with_SidebarView(request):
     return render(request, 'freelancers-grid-layout-full-page.html', context)
 
 # @login_required
+
+
 class FreelancerProfileView(HitCountDetailView):
     model = Freelancer
     template_name = 'single-freelancer-profile.html'
@@ -342,6 +367,7 @@ def FreelancerList_with_SidebarView(request):
 def DisputeView(request):
     return render(request, 'dispute-page.html')
 
+
 @login_required
 def DashboardView(request):
     user = User.objects.get(id=request.user.id)
@@ -355,13 +381,19 @@ def DashboardView(request):
         info = None
     job = PostedJob.objects.filter(is_active=True)
     total_job = job.count()
-    appointed_job = AppliedJob.objects.filter(appointed=True, email=request.user.email)
+    appointed_job = AppliedJob.objects.filter(
+        appointed=True, email=request.user.email)
     total_appointed_job = appointed_job.count()
     # review = Review.objects.filter(user=request.user)
-    this_month_job = PostedJob.objects.filter(updated_at__month=datetime.datetime.now().month)
+    this_month_job = PostedJob.objects.filter(
+        updated_at__month=datetime.datetime.now().month)
     total_this_month_job = this_month_job.count()
     applied_job = AppliedJob.objects.filter(user_id=request.user.id)
     total_applied_job = applied_job.count()
+    job_available_to_apply = PostedJob.objects.filter(
+        is_active=True,
+        apply_last_date__gte=datetime.datetime.now()).exclude(id__in=applied_job)
+    print("job available to apply ", job_available_to_apply)
     context = {
         'user': user,
         'info': info,
@@ -374,6 +406,7 @@ def DashboardView(request):
         'total_this_month_job': total_this_month_job,
         'appointed_job': appointed_job,
         'total_appointed_job': total_appointed_job,
+        'job_available_to_apply': job_available_to_apply,
     }
     return render(request, 'dashboard.html', context)
 
@@ -400,7 +433,8 @@ class BlogSinglePostView(HitCountDetailView):
             next_news = News.objects.get(id=self.object.id + 1)
         else:
             next_news = None
-        releted_news = News.objects.filter(topic=self.object.topic).exclude(id=self.object.id)
+        releted_news = News.objects.filter(
+            topic=self.object.topic).exclude(id=self.object.id)
         if releted_news is None:
             releted_news = None
         context = super(BlogSinglePostView, self).get_context_data(**kwargs)
@@ -411,8 +445,6 @@ class BlogSinglePostView(HitCountDetailView):
             'releted_news': releted_news,
         })
         return context
-
-
 
 
 def BlogGridView(request):
@@ -440,8 +472,10 @@ def ProfileView(request):
 def UnknownURLView(request):
     return render(request, 'pages-404.html')
 
+
 def EmailVerificationNotificationView(request):
     return render(request, 'email-verification-notification.html')
+
 
 def ContactView(request):
     return render(request, 'pages-contact.html')

@@ -25,6 +25,7 @@ class PostedJob(models.Model):
     skills = models.TextField(max_length=500, null=True, blank=True)
     experience = models.IntegerField(default=0, null=True, blank=True)
     vacancy = models.IntegerField(default=1, null=True, blank=True)
+    apply_last_date = models.DateField(null=True, blank=True)
     job_description = models.TextField(max_length=500, null=True, blank=True)
     place = models.CharField(max_length=100, null=True, blank=True)
     salary = models.DecimalField(max_digits=12, decimal_places=2, default=0)
