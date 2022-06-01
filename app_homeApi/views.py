@@ -378,28 +378,42 @@ def DashboardView(request):
     return render(request, 'dashboard.html', context)
 
 
-# def BlogSinglePostView(request, id):
-#     return render(request, 'pages-blog-post.html')
-
-
 class BlogSinglePostView(HitCountDetailView):
     model = News
     template_name = 'pages-blog-post.html'
-    context_object_name = 'news'
-    id = 'id'
+    # context_object_name = 'news'
+    pk = 'id'
     # set to True to count the hit
     count_hit = True
 
     def get_context_data(self, **kwargs):
         print('get_context_data')
         print(kwargs)
+        # check if immediate previous news exists
+
+        if News.objects.filter(id=self.object.id - 1).exists():
+            previous_news = News.objects.get(id=self.object.id - 1)
+        else:
+            previous_news = None
+        # check if immediate next news exists
+        if News.objects.filter(id=self.object.id + 1).exists():
+            next_news = News.objects.get(id=self.object.id + 1)
+        else:
+            next_news = None
+        releted_news = News.objects.filter(topic=self.object.topic).exclude(id=self.object.id)
+        if releted_news is None:
+            releted_news = None
         context = super(BlogSinglePostView, self).get_context_data(**kwargs)
         context.update({
-            'trending_posts': News.objects.order_by('-hit_count_generic__hits')[:3],
-            'previous_post': News.objects.filter(id__lt=self.object.id).last(),
-            'next_post': News.objects.filter(id__gt=self.object.id).first(),
+            'trending_news': News.objects.order_by('-hit_count_generic__hits')[:3],
+            'previous_post': previous_news,
+            'next_post': next_news,
+            'releted_news': releted_news,
         })
         return context
+
+
+
 
 def BlogGridView(request):
     news = News.objects.all()

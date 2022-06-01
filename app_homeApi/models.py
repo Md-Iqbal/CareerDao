@@ -1,4 +1,6 @@
 from email.mime import image
+from pydoc_data.topics import topics
+from unicodedata import category
 from django.db import models
 from hitcount.models import HitCountMixin, HitCount
 from django.contrib.contenttypes.fields import GenericRelation
@@ -91,9 +93,10 @@ class ProjectManager(models.Model):
 class News(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50, null=True, blank=True)
+    topic = models.CharField(max_length=50, null=True, blank=True)
     description = models.TextField(max_length=1500, null=True, blank=True)
     qoute = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = models.ImageField(upload_to='news/', null=True, blank=True)
     is_featured = models.BooleanField(default=False)
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
                                         related_query_name='hit_count_generic_relation')

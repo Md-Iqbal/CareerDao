@@ -34,7 +34,7 @@ urlpatterns = [
          name="FreelancerList_with_SidebarView"),
     path('dispute/', views.DisputeView, name="DisputeView"),
     path('dashboard/', views.DashboardView, name="DashboardView"),
-    path('news/<int:id>/', views.BlogSinglePostView, name="BlogSinglePostView"),
+    path('news/<int:pk>/', views.BlogSinglePostView.as_view(), name="BlogSinglePostView"),
     path('news/', views.BlogGridView, name="BlogGridView"),
     path('blog-sidebar/', views.Blog_with_SidebarView,
          name="Blog_with_SidebarView"),

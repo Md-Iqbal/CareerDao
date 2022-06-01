@@ -30,7 +30,7 @@
 			<div class="col-xl-12">
 				<div class="blog-carousel">
 
-					<a href="{% url 'BlogSinglePostView' id=1 %}" class="blog-compact-item-container">
+					<a href="{% url 'BlogSinglePostView' pk=1 %}" class="blog-compact-item-container">
 						<div class="blog-compact-item">
 							<img src="images/blog-04a.jpg" alt="">
 							<span class="blog-item-tag">Tips</span>
@@ -121,7 +121,7 @@
 				{% if recent_news %}
 				{% for news in recent_news %}
 				<!-- Blog Post -->
-				<a href="{% url 'BlogSinglePostView' id=news.id %}" class="blog-post">
+				<a href="{% url 'BlogSinglePostView' pk=news.id %}" class="blog-post">
 					<!-- Blog Post Thumbnail -->
 					{% if news.image %}
 					<div class="blog-post-thumbnail">
